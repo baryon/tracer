@@ -40,6 +40,8 @@ var logger = require('tracer').colorConsole({level:2});
 Simple Example
 --------------
 
+### Simple Console
+
 ```javascript
 var logger = require('tracer').console();
 logger.test('hello');
@@ -58,6 +60,16 @@ $ node example/console.js
 2012-03-02T13:35:22.85Z <error> console.js:8 (Object.<anonymous>) hello world 123 {"foo":"bar"} [ 1, 2, 3, 4 ] function Object() { [native code] }
 ```
 
+### Color Console
+```javascript
+var logger = require('tracer').colorConsole();
+logger.test('hello');
+logger.trace('hello', 'world');
+logger.debug('hello %s',  'world', 123);
+logger.info('hello %s %d',  'world', 123, {foo:'bar'});
+logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'});
+logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
+```
 
 Advanced Example
 ---------------
@@ -181,7 +193,7 @@ var dblogger = require('tracer').console({
 
 (The MIT License)
 
-Copyright (c) 2012 LI Long;ld &lt;lilong@gmail.com&gt;
+Copyright (c) 2012 LI Long;&ld &lt;lilong@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
