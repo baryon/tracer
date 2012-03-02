@@ -1,0 +1,19 @@
+{
+  "name": "tracer",
+  "description": "A powerful and customizable logging library for node.js",
+  "homepage": "http://github.com/baryon/tracer",
+  "version": "0.1.0",
+  "author": "LI Long <lilong@gmail.com>",
+  "dependencies": {
+    "dateformat": "1.0.2-1.2.3",
+    "colors": ">=0.6.0"
+  },
+  "devDependencies": {
+    "expresso": "0.9.2",
+    "mongoskin": ">= 0.3.0"
+  },
+  "main": "./lib/index",
+  "keywords": ["log", "logger", "trace"],
+  "scripts": { "test": "expresso test/*" },
+  "engines": { "node": ">= 0.2.0" }
+}
