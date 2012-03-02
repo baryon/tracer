@@ -84,6 +84,8 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
 '''
 
+
+
 ### Customize output format
 format tag:
 *  timestamp: current time 
@@ -106,6 +108,8 @@ var logger = require('tracer').console(
 				});
 
 '''
+
+
 
 ### Customize methods and filters 
 
@@ -140,6 +144,8 @@ logger.log5('hello %s %d', 'world', 123);
 //2012-03-02T13:49:36.91Z <log5> methods.js:13 (Object.<anonymous>) hello world 123
 
 '''
+
+
 
 ### MongoDB Transport
 ```javascript
