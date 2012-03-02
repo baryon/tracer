@@ -82,7 +82,7 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
 // test and trace was not be ouputed 
 
-'''
+```
 
 
 
@@ -107,7 +107,7 @@ var logger = require('tracer').console(
 					dateformat : "HH:MM:ss.L"
 				});
 
-'''
+```
 
 
 
@@ -119,7 +119,7 @@ each filtes function was called. the function must be like
 function f1(str) {
 	return str.toUpperCase();
 }
-'''
+```
 
 About [Colors.js](https://github.com/Marak/colors.js)
 
@@ -143,7 +143,7 @@ logger.log5('hello %s %d', 'world', 123);
 //2012-03-02T13:49:36.91Z <log4> methods.js:12 (Object.<anonymous>) hello world 123
 //2012-03-02T13:49:36.91Z <log5> methods.js:13 (Object.<anonymous>) hello world 123
 
-'''
+```
 
 
 
