@@ -193,7 +193,7 @@ var dblogger = require('tracer').console({
 
 (The MIT License)
 
-Copyright (c) 2012 LI Long;&ld &lt;lilong@gmail.com&gt;
+Copyright (c) 2012 LI Long;&lt;lilong@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
