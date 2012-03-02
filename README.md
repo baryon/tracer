@@ -100,6 +100,7 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
 ### Customize output format
 format tag:   
+
 *  timestamp: current time    
 *  title: method name, default is 'test', 'trace', 'debug', 'info', 'warn', 'error'   
 *  message: printf message, support %s string, %d number, %j JSON and auto inspect   
