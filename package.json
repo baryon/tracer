@@ -1,6 +1,6 @@
 {
   "name": "tracer",
-  "description": "A powerful and customizable logging library for node.js",
+  "description": "A powerful and customizable logging library for node.js. keywords: log, logger, trace ",
   "homepage": "http://github.com/baryon/tracer",
   "version": "0.1.0",
   "author": "LI Long <lilong@gmail.com>",

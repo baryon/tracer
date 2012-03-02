@@ -99,17 +99,18 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
 
 ### Customize output format
-format tag:
-*  timestamp: current time 
-*  title: method name, default is 'test', 'trace', 'debug', 'info', 'warn', 'error'
-*  message: printf message, support %s string, %d number, %j JSON and auto inspect
-*  file: file name
-*  line: line number
-*  pos: postion
-*  path: file's path
-*  method: method name of caller
-*  stack: call statck
-
+format tag:   
+*  timestamp: current time    
+*  title: method name, default is 'test', 'trace', 'debug', 'info', 'warn', 'error'   
+*  message: printf message, support %s string, %d number, %j JSON and auto inspect   
+*  file: file name   
+*  line: line number   
+*  pos: postion   
+*  path: file's path   
+*  method: method name of caller   
+*  stack: call statck   
+   
+   
 About [Date Format](http://blog.stevenlevithan.com/archives/date-time-format)
 
 ```javascript
@@ -193,7 +194,7 @@ var dblogger = require('tracer').console({
 
 (The MIT License)
 
-Copyright (c) 2012 LI Long;&lt;lilong@gmail.com&gt;
+Copyright (c) 2012 LI Long  &lt;lilong@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
