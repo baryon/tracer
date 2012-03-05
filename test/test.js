@@ -1,7 +1,7 @@
 var assert = require("assert");
 
 exports["simple message"] = function() {
-	var logger = require('tracer').console({
+	var logger = require('../').console({
 		format : "{{message}}",
 		transpot : function(data) {
 			console.log(data.output);
@@ -13,7 +13,7 @@ exports["simple message"] = function() {
 }
 
 exports["simple console message"] = function() {
-	var logger = require('tracer').colorConsole({
+	var logger = require('../').colorConsole({
 		format : "{{message}}",
 		transpot : function(data) {
 			console.log(data.output);
