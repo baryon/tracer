@@ -23,17 +23,20 @@ Usage
 Add to your code:
 
 Simple Console  
+
 ```javascript
 var logger = require('tracer').console();
 ```
 
 
 Color Console  
+
 ```javascript
 var logger = require('tracer').colorConsole();
 ```
 
 Set Output Level  
+
 ```javascript
 var logger = require('tracer').colorConsole({level:'warn'});
 ```
