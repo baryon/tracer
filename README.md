@@ -276,6 +276,11 @@ console.log('\n\n\npress ctrl-c to exit');
 	
 ## History
 
+### 0.2.0
+
+* Add more examples.
+* Default methods is log, trace, debug, info, warn, error.
+* Support 'string' level, {level:'warn'} equal {level:4}
 
 ### 0.1.0
 
