@@ -200,6 +200,22 @@ logger.log5('hello %s %d', 'world', 123);
 
 ```
 
+the filter support key-value pair, example: [color_console.js](https://github.com/baryon/tracer/blob/master/lib/color_console.js)
+
+```javascript
+{
+		filters : {
+			//log : colors.black,
+			trace : colors.magenta,
+			debug : colors.blue,
+			info : colors.green,
+			warn : colors.yellow,
+			error : [ colors.red, colors.bold ]
+		}
+}
+```
+
+	
 ### Log File Transport
 ```javascript
 var fs = require('fs');
@@ -280,6 +296,25 @@ console.log('\n\n\npress ctrl-c to exit');
 ```
 
 
+### Define your logging helper
+
+the works is like [color_console.js](https://github.com/baryon/tracer/blob/master/lib/color_console.js)
+
+```javascript
+var colors = require('colors');
+module.exports = function(conf) {
+	return require('./console')({
+		filters : {
+			//log : colors.black,
+			trace : colors.magenta,
+			debug : colors.blue,
+			info : colors.green,
+			warn : colors.yellow,
+			error : [ colors.red, colors.bold ]
+		}
+	}, conf);
+};
+```
 	
 ## History
 
