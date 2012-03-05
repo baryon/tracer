@@ -4,7 +4,7 @@ function f1(str, data) {
 	if( data.title === 'log5' ){
 		//do some thing, example write to database
 		
-		//if you don't want contine other filter, then 
+		//if you don't want continue other filter, then 
 		return false; 
 	}
 	return str.toUpperCase();
