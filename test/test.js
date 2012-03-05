@@ -8,7 +8,7 @@ exports["simple message"] = function() {
 			return data;
 		}
 	});
-	var o = logger.test('hello');
+	var o = logger.log('hello');
 	assert.equal(o['output'], 'hello');
 }
 
@@ -20,6 +20,6 @@ exports["simple console message"] = function() {
 			return data;
 		}
 	});
-	var o = logger.test('hello');
-	assert.equal(o.output, '\u001b[35mhello\u001b[39m');
+	var o = logger.debug('hello');
+	assert.equal(o.output, '\u001b[34mhello\u001b[39m');
 }

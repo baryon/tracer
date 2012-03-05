@@ -1,13 +1,19 @@
 var colors = require('colors');
 
-function f1(str) {
+function f1(str, data) {
+	if( data.title === 'log5' ){
+		//do some thing, example write to database
+		
+		//if you don't want contine other filter, then 
+		return false; 
+	}
 	return str.toUpperCase();
 }
 
 var logger = require('tracer').colorConsole({
 	level : 1,
 	methods : [ 'log0', 'log1', 'log2', 'log3', 'log4', 'log5' ],
-	filters : [f1, colors.bold, colors.italic, colors.underline, colors.inverse, colors.yellow],
+	filters : [f1, colors.underline, colors.yellow],
 
 });
 logger.log0('hello');
