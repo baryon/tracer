@@ -161,7 +161,7 @@ function f1(str, data) {
 		// data.title === 'error' or data.title === 'warn'
 		//do some thing, example write to database, you can use async write to do this
 		
-		//if you don't want contine other filter, then 
+		//if you don't want continue other filter, then 
 		//return false; 
 	}
 	return str.toUpperCase();
