@@ -22,29 +22,27 @@ Usage
 -----
 Add to your code:
 
+Simple Console  
 ```javascript
 var logger = require('tracer').console();
 ```
 
 
+Color Console  
 ```javascript
 var logger = require('tracer').colorConsole();
 ```
 
-
+Set Output Level  
 ```javascript
-var logger = require('tracer').colorConsole({level:2});
+var logger = require('tracer').colorConsole({level:'warn'});
 ```
 
 
 Simple Example
 --------------
 
-some helper package is need, so install -dev for running examples
 
-```javascript
-npm install -dev tracer
-```
 
 ### Simple Console
 
@@ -79,6 +77,12 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
 Advanced Example
 ---------------
+some helper package is need, so install -dev for running examples
+
+```javascript
+npm install -dev tracer
+```
+
 
 Take a look at the examples directory for different examples.
 
@@ -130,7 +134,7 @@ format tag:
 *  stack: call stack   
    
    
-About [Date Format](http://blog.stevenlevithan.com/archives/date-time-format)
+About [Tim micro-template](https://github.com/premasagar/tim) and [Date Format](http://blog.stevenlevithan.com/archives/date-time-format)
 
 ```javascript
 var logger = require('tracer').console(
