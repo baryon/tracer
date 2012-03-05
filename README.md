@@ -298,7 +298,7 @@ console.log('\n\n\npress ctrl-c to exit');
 
 ### Define your logging helper
 
-the works is like [color_console.js](https://github.com/baryon/tracer/blob/master/lib/color_console.js)
+the work is like [color_console.js](https://github.com/baryon/tracer/blob/master/lib/color_console.js)
 
 ```javascript
 var colors = require('colors');
