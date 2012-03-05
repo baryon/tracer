@@ -127,7 +127,7 @@ format tag:
 *  pos: postion   
 *  path: file's path   
 *  method: method name of caller   
-*  stack: call statck   
+*  stack: call stack   
    
    
 About [Date Format](http://blog.stevenlevithan.com/archives/date-time-format)
@@ -275,6 +275,10 @@ console.log('\n\n\npress ctrl-c to exit');
 
 	
 ## History
+
+### 0.2.1
+
+* fix spell missing
 
 ### 0.2.0
 

@@ -23,3 +23,17 @@ exports["simple console message"] = function() {
 	var o = logger.debug('hello');
 	assert.equal(o.output, '\u001b[34mhello\u001b[39m');
 }
+
+exports["console log method"] = function() {
+	var logger = require('../').console({
+		format : "{{message}}",
+		transpot : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	var o = logger.log('hello %s %d', 'world', 123);
+	assert.equal(o['title'], 'log');
+	assert.equal(o['file'], 'test.js');
+	assert.equal(o['output'], 'hello world 123');
+}
