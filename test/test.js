@@ -37,3 +37,54 @@ exports["console log method"] = function() {
 	assert.equal(o['file'], 'test.js');
 	assert.equal(o['output'], 'hello world 123');
 }
+
+exports["custom format"] = function() {
+	var logger = require('../').console({
+		format : [
+		          "{{message}}", //default format
+		          {
+		        	  warn : "warn:{{message}}",
+		        	  error : "error:{{message}}",
+		          }	
+		],
+		transpot : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	var o = logger.log('hello %s %d', 'world', 123);
+	assert.equal(o['output'], 'hello world 123');
+	o = logger.warn('hello %s %d', 'world', 123);
+	assert.equal(o['output'], 'warn:hello world 123');
+	o = logger.error('hello %s %d', 'world', 123);
+	assert.equal(o['output'], 'error:hello world 123');
+}
+
+exports["custom filter"] = function() {
+	var colors = require('colors');
+	var logger = require('../').console({
+		format : [
+		          "{{message}}", //default format
+		          {
+		        	  warn : "warn:{{message}}",
+		        	  error : "error:{{message}}",
+		          }	
+		],
+		filters:[
+		colors.underline,
+        {
+     	   warn : colors.yellow,
+     	   error : [colors.red, colors.bold ]
+        }],
+		transpot : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	var o = logger.log('hello %s %d', 'world', 123);
+	assert.equal(o['output'], '\u001b[4mhello world 123\u001b[24m');
+	o = logger.warn('hello %s %d', 'world', 123);
+	assert.equal(o['output'], '\u001b[33mwarn:hello world 123\u001b[39m');
+	o = logger.error('hello %s %d', 'world', 123);
+	assert.equal(o['output'], '\u001b[1m\u001b[31merror:hello world 123\u001b[39m\u001b[22m');
+}

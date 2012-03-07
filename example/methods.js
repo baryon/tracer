@@ -1,19 +1,9 @@
 var colors = require('colors');
 
-function f1(str, data) {
-	if( data.title === 'log5' ){
-		//do some thing, example write to database
-		
-		//if you don't want continue other filter, then 
-		return false; 
-	}
-	return str.toUpperCase();
-}
-
 var logger = require('tracer').colorConsole({
-	level : 1,
+	level : 'log1',
 	methods : [ 'log0', 'log1', 'log2', 'log3', 'log4', 'log5' ],
-	filters : [f1, colors.underline, colors.yellow],
+	filters : [colors.underline, colors.yellow],
 
 });
 logger.log0('hello');
@@ -23,7 +13,7 @@ logger.log4('hello %s %d', 'world', 123);
 logger.log5('hello %s %d', 'world', 123);
 
 //$ node example/methods.js 
-//2012-03-02T14:10:31.45Z <LOG1> METHODS.JS:14 (OBJECT.<ANONYMOUS>) HELLO WORLD
-//2012-03-02T14:10:31.46Z <LOG2> METHODS.JS:15 (OBJECT.<ANONYMOUS>) HELLO WORLD 123
-//2012-03-02T14:10:31.46Z <LOG4> METHODS.JS:16 (OBJECT.<ANONYMOUS>) HELLO WORLD 123
-//2012-03-02T14:10:31.46Z <LOG5> METHODS.JS:17 (OBJECT.<ANONYMOUS>) HELLO WORLD 123
+//2012-03-07T10:09:16.23Z <log1> methods.js:10 (Object.<anonymous>) hello world
+//2012-03-07T10:09:16.24Z <log2> methods.js:11 (Object.<anonymous>) hello world 123
+//2012-03-07T10:09:16.24Z <log4> methods.js:12 (Object.<anonymous>) hello world 123
+//2012-03-07T10:09:16.24Z <log5> methods.js:13 (Object.<anonymous>) hello world 123

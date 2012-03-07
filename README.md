@@ -117,7 +117,7 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 //2012-03-02T13:41:33.29Z <warn> level.js:6 (Object.<anonymous>) hello world 123 {"foo":"bar"}
 //2012-03-02T13:41:33.30Z <error> level.js:7 (Object.<anonymous>) hello world 123 {"foo":"bar"} [ 1, 2, 3, 4 ] function Object() { [native code] }
 
-// log,trace, debug and info level was not ouputed 
+//log,trace, debug and info level was not ouputed 
 
 ```
 
@@ -149,8 +149,44 @@ var logger = require('tracer').console(
 ```
 
 
+Or, you can set special format for output method
 
-### Customize methods and filters 
+```javascript
+var logger = require('tracer')
+		.colorConsole(
+				{
+					format : [
+					          "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})", //default format
+					          {
+					             // error format
+					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack: {{stack}}"
+					          }	
+					],
+					dateformat : "HH:MM:ss.L"
+				});
+```
+
+### Customize output methods
+
+```javascript
+var colors = require('colors');
+
+var logger = require('tracer').colorConsole({
+	level : 'log1',
+	methods : [ 'log0', 'log1', 'log2', 'log3', 'log4', 'log5' ],
+	filters : [colors.underline, colors.yellow],
+
+});
+logger.log0('hello');
+logger.log1('hello', 'world');
+logger.log2('hello %s', 'world', 123);
+logger.log4('hello %s %d', 'world', 123);
+logger.log5('hello %s %d', 'world', 123);
+```
+
+
+
+### Customize filters 
 
 each filtes function was called. the function is synchronous and must be like
 
@@ -164,8 +200,7 @@ or you can use the second parameter
 
 ```javascript
 function f1(str, data) {
-	if( data.title === 'log5' ){
-		// data.title === 'error' or data.title === 'warn'
+	if( data.title === 'error' ){
 		//do some thing, example write to database, you can use async write to do this
 		
 		//if you don't want continue other filter, then 
@@ -181,26 +216,19 @@ About [Colors.js](https://github.com/Marak/colors.js)
 ```javascript
 var colors = require('colors');
 var logger = require('tracer').colorConsole({
-	level : 1,
-	methods : [ 'log0', 'log1', 'log2', 'log3', 'log4', 'log5' ],
-	filters : [colors.bold, colors.italic, colors.underline, colors.inverse, colors.yellow],
-
+	filters : [
+	           f1, colors.underline, colors.blue, //default filter
+	           //the last item can be custom filter. here is "warn" and "error" filter
+	           {
+	        	   warn : colors.yellow,
+	        	   error : [f1, colors.red, colors.bold ]
+	           }
+	]
 });
-logger.log0('hello');
-logger.log1('hello', 'world');
-logger.log2('hello %s', 'world', 123);
-logger.log4('hello %s %d', 'world', 123);
-logger.log5('hello %s %d', 'world', 123);
-
-//$ node example/methods.js 
-//2012-03-02T13:49:36.89Z <log1> methods.js:10 (Object.<anonymous>) hello world
-//2012-03-02T13:49:36.90Z <log2> methods.js:11 (Object.<anonymous>) hello world 123
-//2012-03-02T13:49:36.91Z <log4> methods.js:12 (Object.<anonymous>) hello world 123
-//2012-03-02T13:49:36.91Z <log5> methods.js:13 (Object.<anonymous>) hello world 123
 
 ```
 
-the filter support key-value pair, example: [color_console.js](https://github.com/baryon/tracer/blob/master/lib/color_console.js)
+the filter support key-function pair, example: [color_console.js](https://github.com/baryon/tracer/blob/master/lib/color_console.js)
 
 ```javascript
 {
@@ -215,6 +243,7 @@ the filter support key-value pair, example: [color_console.js](https://github.co
 }
 ```
 
+and the filters is an array, the last item can be custom filter. see example:[filter.js](https://github.com/baryon/tracer/blob/master/example/filter.js)
 	
 ### Log File Transport
 ```javascript
@@ -317,6 +346,10 @@ module.exports = function(conf) {
 ```
 	
 ## History
+
+### 0.3.0
+
+* support custom format and filter for special method
 
 ### 0.2.1
 
