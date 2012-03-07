@@ -1,6 +1,0 @@
-2012-03-07T11:38:33.54Z <log> file.js:15 (Object.<anonymous>) hello
-2012-03-07T11:38:33.55Z <trace> file.js:16 (Object.<anonymous>) hello world
-2012-03-07T11:38:33.55Z <debug> file.js:17 (Object.<anonymous>) hello world 123
-2012-03-07T11:38:33.55Z <info> file.js:18 (Object.<anonymous>) hello world 123 { foo: 'bar' }
-2012-03-07T11:38:33.55Z <warn> file.js:19 (Object.<anonymous>) hello world 123 {"foo":"bar"}
-2012-03-07T11:38:33.55Z <error> file.js:20 (Object.<anonymous>) hello world 123 {"foo":"bar"} [ 1, 2, 3, 4 ] function Object() { [native code] }
