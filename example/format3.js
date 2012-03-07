@@ -3,7 +3,7 @@ var tracer = require('tracer')
 function test(id){
 	var logger = tracer.colorConsole(
 				{
-					format : "{{timestamp}} " + id + " <{{title}}> {{message}}",
+					format : "{{timestamp}} " + id + " <{{title}}> {{file}}:{{line}} ({{method}}) {{message}}",
 					dateformat : "HH:MM:ss.L"
 				});
 	logger.log('hello');
