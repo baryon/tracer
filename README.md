@@ -347,6 +347,10 @@ module.exports = function(conf) {
 	
 ## History
 
+### 0.3.1
+
+* minor-fix for call stack
+
 ### 0.3.0
 
 * support custom format and filter for special method
