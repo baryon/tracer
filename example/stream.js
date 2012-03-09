@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 var logger = require('tracer').console({
-		transpot : function(data) {
+	transport : function(data) {
 			console.log(data.output);
 			var stream = fs.createWriteStream("./stream.log", {
 			    flags: "a",

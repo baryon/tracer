@@ -250,7 +250,7 @@ and the filters is an array, the last item can be custom filter. see example:[fi
 var fs = require('fs');
 
 var logger = require('tracer').console({
-	transpot : function(data) {
+	transport : function(data) {
 		console.log(data.output);
 		fs.open('./file.log', 'a', 0666, function(e, id) {
 			fs.write(id, data.output+"\n", null, 'utf8', function() {
@@ -275,7 +275,7 @@ logger.error('hello %s %d %j', 'world', 123, {foo : 'bar'}, [ 1, 2, 3, 4 ], Obje
 var fs = require('fs');
 
 var logger = require('tracer').console({
-		transpot : function(data) {
+		transport : function(data) {
 			console.log(data.output);
 			var stream = fs.createWriteStream("./stream.log", {
 			    flags: "a",
@@ -300,7 +300,7 @@ var mongo = require('mongoskin');
 var db = mongo.db("127.0.0.1:27017/test?auto_reconnect");
 
 var log_conf = {
-		transpot : function(data) {
+		transport : function(data) {
 			console.log(data.output);
 			var loginfo = db.collection("loginfo");
 			loginfo.insert( data, function(err, log) {
@@ -346,6 +346,10 @@ module.exports = function(conf) {
 ```
 	
 ## History
+
+### 0.3.3
+
+* speel missing (transpot->transport)  
 
 ### 0.3.2
 

@@ -2,7 +2,7 @@ var mongo = require('mongoskin');
 var db = mongo.db("127.0.0.1:27017/test?auto_reconnect");
 
 var log_conf = {
-		transpot : function(data) {
+		transport : function(data) {
 			console.log(data.output);
 			var loginfo = db.collection("loginfo");
 			loginfo.insert( data, function(err, log) {

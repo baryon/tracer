@@ -3,7 +3,7 @@ var assert = require("assert");
 exports["simple message"] = function() {
 	var logger = require('../').console({
 		format : "{{message}}",
-		transpot : function(data) {
+		transport : function(data) {
 			console.log(data.output);
 			return data;
 		}
@@ -15,7 +15,7 @@ exports["simple message"] = function() {
 exports["simple console message"] = function() {
 	var logger = require('../').colorConsole({
 		format : "{{message}}",
-		transpot : function(data) {
+		transport : function(data) {
 			console.log(data.output);
 			return data;
 		}
@@ -27,7 +27,7 @@ exports["simple console message"] = function() {
 exports["console log method"] = function() {
 	var logger = require('../').console({
 		format : "{{message}}",
-		transpot : function(data) {
+		transport : function(data) {
 			console.log(data.output);
 			return data;
 		}
@@ -47,7 +47,7 @@ exports["custom format"] = function() {
 		        	  error : "error:{{message}}",
 		          }	
 		],
-		transpot : function(data) {
+		transport : function(data) {
 			console.log(data.output);
 			return data;
 		}
@@ -76,7 +76,7 @@ exports["custom filter"] = function() {
      	   warn : colors.yellow,
      	   error : [colors.red, colors.bold ]
         }],
-		transpot : function(data) {
+        transport : function(data) {
 			console.log(data.output);
 			return data;
 		}
@@ -91,7 +91,7 @@ exports["custom filter"] = function() {
 
 exports["set level to log"] = function() {
 	var logger = require('../').console({level:'log',
-		transpot : function(data) {
+		transport : function(data) {
 			return data;
 		}
 	});
@@ -104,7 +104,7 @@ exports["set level to log"] = function() {
 }
 exports["set level to 0"] = function() {
 	var logger = require('../').console({level:0,
-		transpot : function(data) {
+		transport : function(data) {
 			return data;
 		}
 	});
@@ -117,7 +117,7 @@ exports["set level to 0"] = function() {
 }
 exports["set level to 2"] = function() {
 	var logger = require('../').console({level:2,
-		transpot : function(data) {
+		transport : function(data) {
 			return data;
 		}
 	});
@@ -130,7 +130,7 @@ exports["set level to 2"] = function() {
 }
 exports["set level to warn"] = function() {
 	var logger = require('../').console({level:'warn',
-		transpot : function(data) {
+		transport : function(data) {
 			return data;
 		}
 	});
@@ -143,7 +143,7 @@ exports["set level to warn"] = function() {
 }
 exports["set level to error"] = function() {
 	var logger = require('../').console({level:'error',
-		transpot : function(data) {
+		transport : function(data) {
 			return data;
 		}
 	});
@@ -156,7 +156,7 @@ exports["set level to error"] = function() {
 }
 exports["set level to max value"] = function() {
 	var logger = require('../').console({level:Number.MAX_VALUE,
-		transpot : function(data) {
+		transport : function(data) {
 			return data;
 		}
 	});
