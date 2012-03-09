@@ -349,7 +349,7 @@ module.exports = function(conf) {
 
 ### 0.3.3
 
-* speel missing (transpot->transport)  
+* spell missing (transpot->transport)  
 
 ### 0.3.2
 
