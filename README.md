@@ -347,6 +347,11 @@ module.exports = function(conf) {
 	
 ## History
 
+### 0.3.2
+
+* speed-up for _log function  
+* add some test codes  
+
 ### 0.3.1
 
 * minor-fix for call stack

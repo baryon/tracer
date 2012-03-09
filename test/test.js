@@ -41,7 +41,7 @@ exports["console log method"] = function() {
 exports["custom format"] = function() {
 	var logger = require('../').console({
 		format : [
-		          "{{message}}", //default format
+		          "{{message}}", // default format
 		          {
 		        	  warn : "warn:{{message}}",
 		        	  error : "error:{{message}}",
@@ -64,7 +64,7 @@ exports["custom filter"] = function() {
 	var colors = require('colors');
 	var logger = require('../').console({
 		format : [
-		          "{{message}}", //default format
+		          "{{message}}", // default format
 		          {
 		        	  warn : "warn:{{message}}",
 		        	  error : "error:{{message}}",
@@ -87,4 +87,83 @@ exports["custom filter"] = function() {
 	assert.equal(o['output'], '\u001b[33mwarn:hello world 123\u001b[39m');
 	o = logger.error('hello %s %d', 'world', 123);
 	assert.equal(o['output'], '\u001b[1m\u001b[31merror:hello world 123\u001b[39m\u001b[22m');
+}
+
+exports["set level to log"] = function() {
+	var logger = require('../').console({level:'log',
+		transpot : function(data) {
+			return data;
+		}
+	});
+	assert.ok(logger.log('hello'));
+	assert.ok(logger.trace('hello', 'world'));
+	assert.ok(logger.debug('hello %s',  'world', 123));
+	assert.ok(logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+}
+exports["set level to 0"] = function() {
+	var logger = require('../').console({level:0,
+		transpot : function(data) {
+			return data;
+		}
+	});
+	assert.ok(logger.log('hello'));
+	assert.ok(logger.trace('hello', 'world'));
+	assert.ok(logger.debug('hello %s',  'world', 123));
+	assert.ok(logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+}
+exports["set level to 2"] = function() {
+	var logger = require('../').console({level:2,
+		transpot : function(data) {
+			return data;
+		}
+	});
+	assert.ok(!logger.log('hello'));
+	assert.ok(!logger.trace('hello', 'world'));
+	assert.ok(logger.debug('hello %s',  'world', 123));
+	assert.ok(logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+}
+exports["set level to warn"] = function() {
+	var logger = require('../').console({level:'warn',
+		transpot : function(data) {
+			return data;
+		}
+	});
+	assert.ok(!logger.log('hello'));
+	assert.ok(!logger.trace('hello', 'world'));
+	assert.ok(!logger.debug('hello %s',  'world', 123));
+	assert.ok(!logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+}
+exports["set level to error"] = function() {
+	var logger = require('../').console({level:'error',
+		transpot : function(data) {
+			return data;
+		}
+	});
+	assert.ok(!logger.log('hello'));
+	assert.ok(!logger.trace('hello', 'world'));
+	assert.ok(!logger.debug('hello %s',  'world', 123));
+	assert.ok(!logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(!logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+}
+exports["set level to max value"] = function() {
+	var logger = require('../').console({level:Number.MAX_VALUE,
+		transpot : function(data) {
+			return data;
+		}
+	});
+	assert.ok(!logger.log('hello'));
+	assert.ok(!logger.trace('hello', 'world'));
+	assert.ok(!logger.debug('hello %s',  'world', 123));
+	assert.ok(!logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(!logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(!logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
 }
