@@ -83,10 +83,13 @@ exports["custom filter"] = function() {
 	});
 	var o = logger.log('hello %s %d', 'world', 123);
 	assert.equal(o['output'], '\u001b[4mhello world 123\u001b[24m');
+	assert.equal(o['level'], 0);
 	o = logger.warn('hello %s %d', 'world', 123);
 	assert.equal(o['output'], '\u001b[33mwarn:hello world 123\u001b[39m');
+	assert.equal(o['level'], 4);
 	o = logger.error('hello %s %d', 'world', 123);
 	assert.equal(o['output'], '\u001b[1m\u001b[31merror:hello world 123\u001b[39m\u001b[22m');
+	assert.equal(o['level'], 5);
 }
 
 exports["set level to log"] = function() {

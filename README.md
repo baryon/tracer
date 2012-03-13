@@ -128,6 +128,7 @@ format tag:
 
 *  timestamp: current time    
 *  title: method name, default is 'log', 'trace', 'debug', 'info', 'warn', 'error'   
+*  level: method level, default is 'log':0, 'trace':1, 'debug':2, 'info':3, 'warn':4, 'error':5   
 *  message: printf message, support %s string, %d number, %j JSON and auto inspect   
 *  file: file name   
 *  line: line number   
@@ -137,7 +138,7 @@ format tag:
 *  stack: call stack   
    
    
-About [Tim micro-template](https://github.com/premasagar/tim) and [Date Format](http://blog.stevenlevithan.com/archives/date-time-format)
+About [Tim micro-template](https://github.com/baryon/node-tinytim) and [Date Format](http://blog.stevenlevithan.com/archives/date-time-format)
 
 ```javascript
 var logger = require('tracer').console(
@@ -346,6 +347,10 @@ module.exports = function(conf) {
 ```
 	
 ## History
+
+### 0.3.4
+
+* use [tinytim package](https://github.com/baryon/node-tinytim)  
 
 ### 0.3.3
 
