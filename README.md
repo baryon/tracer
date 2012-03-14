@@ -348,6 +348,10 @@ module.exports = function(conf) {
 	
 ## History
 
+### 0.3.5
+
+* fixed bug: can't get method/line number in express  
+
 ### 0.3.4
 
 * use [tinytim package](https://github.com/baryon/node-tinytim)  
