@@ -51,6 +51,7 @@ Simple Example
 
 ```javascript
 var logger = require('tracer').console();
+
 logger.log('hello');
 logger.trace('hello', 'world');
 logger.debug('hello %s',  'world', 123);
@@ -70,6 +71,7 @@ $ node example/console.js
 ### Color Console
 ```javascript
 var logger = require('tracer').colorConsole();
+
 logger.log('hello');
 logger.trace('hello', 'world');
 logger.debug('hello %s',  'world', 123);
@@ -77,6 +79,20 @@ logger.info('hello %s %d',  'world', 123, {foo:'bar'});
 logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'});
 logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 ```
+
+### Daily Log
+```javascript
+var logger = require('tracer').dailyfile({root:'.'});
+
+logger.log('hello');
+logger.trace('hello', 'world');
+logger.debug('hello %s',  'world', 123);
+logger.info('hello %s %d',  'world', 123, {foo:'bar'});
+logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'});
+logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
+```
+
+dailylog will output all types log to diff files every day like log4j
 
 Advanced Example
 ---------------
@@ -137,8 +153,10 @@ format tag:
 *  method: method name of caller   
 *  stack: call stack   
    
-   
-About [Tim micro-template](https://github.com/baryon/node-tinytim) and [Date Format](http://blog.stevenlevithan.com/archives/date-time-format)
+we use tinytim micro-template system to output log.  see details [tinytim](https://github.com/baryon/node-tinytim).  
+and, we use [Date Format](http://blog.stevenlevithan.com/archives/date-time-format) to format datetime.  
+
+
 
 ```javascript
 var logger = require('tracer').console(
@@ -159,13 +177,27 @@ var logger = require('tracer')
 					format : [
 					          "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})", //default format
 					          {
-					             // error format
-					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack: {{stack}}"
+					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:{{stacklist}}" // error format
 					          }	
 					],
-					dateformat : "HH:MM:ss.L"
+					dateformat : "HH:MM:ss.L",
+					preprocess :  function(data){
+						if(data.title==='error'){
+							var callstack = '',len=data.stack.length;
+							for(var i=0; i<len; i+=1){
+								callstack += '\n'+data.stack[i];
+							}
+							data.stacklist = callstack;
+						}
+						
+						data.title = data.title.toUpperCase();
+					}
 				});
 ```
+
+the preprocess method is a choice for changing tag.  
+ 
+
 
 ### Customize output methods
 
@@ -347,6 +379,11 @@ module.exports = function(conf) {
 ```
 	
 ## History
+
+### 0.4.0
+
+* feature: support dailyfile method, added some examples  
+* feature: add preprocess custom method for changing  tags before format
 
 ### 0.3.5
 
