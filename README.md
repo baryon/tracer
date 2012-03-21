@@ -380,6 +380,10 @@ module.exports = function(conf) {
 	
 ## History
 
+### 0.4.1
+
+* fixed: default timestamp is ISO UTC format.  
+
 ### 0.4.0
 
 * feature: support dailyfile method, added some examples  
