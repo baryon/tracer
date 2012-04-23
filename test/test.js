@@ -12,7 +12,7 @@ exports["simple message"] = function() {
 	assert.equal(o['output'], 'hello');
 }
 
-exports["simple console message"] = function() {
+exports["simple color message"] = function() {
 	var logger = require('../').colorConsole({
 		format : "{{message}}",
 		transport : function(data) {
@@ -21,7 +21,7 @@ exports["simple console message"] = function() {
 		}
 	});
 	var o = logger.debug('hello');
-	assert.equal(o.output, '\u001b[34mhello\u001b[39m');
+	assert.equal(o.output, '\u001b[36mhello\u001b[39m');
 }
 
 exports["console log method"] = function() {
