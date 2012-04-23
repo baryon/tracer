@@ -380,6 +380,10 @@ module.exports = function(conf) {
 	
 ## History
 
+### 0.4.2
+
+* fixed: debug color from blue to cyan  
+
 ### 0.4.1
 
 * fixed: default timestamp is ISO UTC format.  
