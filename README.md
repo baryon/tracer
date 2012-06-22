@@ -380,6 +380,10 @@ module.exports = function(conf) {
 	
 ## History
 
+### 0.5.0
+
+* performance: speed up when the format don't include method,path,line,pos,file, thanks sharonjl's issue report  
+
 ### 0.4.2
 
 * fixed: debug color from blue to cyan  

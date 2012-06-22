@@ -1,5 +1,19 @@
 var assert = require("assert");
 
+exports["simple"] = function() {
+	var logger = require('../').console({
+		transport : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	var o = logger.info('hello');
+	assert.equal(o['message'], 'hello');
+	assert.equal(o['file'], 'test.js');
+	assert.equal(o['line'], 10);
+	assert.equal(o['level'], 3);
+}
+
 exports["simple message"] = function() {
 	var logger = require('../').console({
 		format : "{{message}}",
@@ -11,6 +25,7 @@ exports["simple message"] = function() {
 	var o = logger.log('hello');
 	assert.equal(o['output'], 'hello');
 }
+
 
 exports["simple color message"] = function() {
 	var logger = require('../').colorConsole({
@@ -34,7 +49,7 @@ exports["console log method"] = function() {
 	});
 	var o = logger.log('hello %s %d', 'world', 123);
 	assert.equal(o['title'], 'log');
-	assert.equal(o['file'], 'test.js');
+	assert.equal(o['file'], '');//the format don't include "file", so can't get it
 	assert.equal(o['output'], 'hello world 123');
 }
 
