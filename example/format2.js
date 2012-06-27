@@ -18,6 +18,10 @@ var logger = require('tracer')
 						}
 						
 						data.title = data.title.toUpperCase();
+						
+						if(data.args[0]=='hello'){
+							data.message += ' node.js';
+						}
 					}
 				});
 

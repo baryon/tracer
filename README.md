@@ -380,6 +380,10 @@ module.exports = function(conf) {
 	
 ## History
 
+### 0.5.1
+
+* feature: add args into data object, now we can check args in preprocess, see example format2.js, merge from yasuyk04/work   
+
 ### 0.5.0
 
 * performance: speed up when the format don't include method,path,line,pos,file, thanks sharonjl's issue report  
