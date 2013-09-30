@@ -377,8 +377,45 @@ module.exports = function(conf) {
 	}, conf);
 };
 ```
+
+### Customize output Object's properties
+
+```javascript
+var obj =  {Request: 
+   [ { IsValid: [ 'True' ],
+       ItemSearchRequest: 
+        [ { ResponseGroup: [ 'Small', 'OfferSummary' ],
+            Sort: [ 'salesrank' ],
+            SearchIndex: [ 'DVD']
+          }
+        ]
+     } ] };
+     
+var logger = require('tracer').console({
+		showHidden : true, //the object's non-enumerable properties will be shown too
+		depth : null //tells inspect how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Defaults to 2. To make it recurse indefinitely pass null.
+	});
+logger.log(obj);
+
+// 
+// 2013-09-30T04:30:44.927Z <log> depth.js:26 (Object.<anonymous>) { Request:
+//    [ { IsValid: [ 'True', [length]: 1 ],
+//        ItemSearchRequest:
+//         [ { ResponseGroup: [ 'Small', 'OfferSummary', [length]: 2 ],
+//             Sort: [ 'salesrank', [length]: 1 ],
+//             SearchIndex: [ 'DVD', [length]: 1 ] },
+//           [length]: 1 ] },
+//      [length]: 1 ] }
+     
+```
+
+
 	
 ## History
+
+### 0.6.0
+
+* feature: add showHidden and depth option for showing object's properties.  
 
 ### 0.5.1
 
