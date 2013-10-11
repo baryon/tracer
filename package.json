@@ -2,6 +2,10 @@
   "name": "tracer",
   "description": "A powerful and customizable logging library for node.js. support color console with timestamp, line number, method name, file name and call stack. you can set transport to file, stream, database(ex: mongodb and clouddb, simpledb). keywords: log, logger, trace ",
   "homepage": "http://github.com/baryon/tracer",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/baryon/tracer.git"
+  },
   "version": "0.6.0",
   "author": "LI Long <lilong@gmail.com>",
   "dependencies": {
