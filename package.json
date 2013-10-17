@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://github.com/baryon/tracer.git"
   },
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": "LI Long <lilong@gmail.com>",
   "dependencies": {
     "dateformat": "1.0.2-1.2.3",

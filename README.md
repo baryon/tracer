@@ -413,6 +413,11 @@ logger.log(obj);
 	
 ## History
 
+### 0.6.1
+
+* fixed: get the filename correctly on windows. thanks Tom Carchrae
+* added: added missing repository field. thanks madarche  
+
 ### 0.6.0
 
 * feature: add showHidden and depth option for showing object's properties.  
