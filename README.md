@@ -151,7 +151,7 @@ format tag:
 *  pos: postion   
 *  path: file's path   
 *  method: method name of caller   
-*  stack: call stack   
+*  stack: call stack message  
    
 we use tinytim micro-template system to output log.  see details [tinytim](https://github.com/baryon/node-tinytim).  
 and, we use [Date Format](http://blog.stevenlevithan.com/archives/date-time-format) to format datetime.  
@@ -177,19 +177,11 @@ var logger = require('tracer')
 					format : [
 					          "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})", //default format
 					          {
-					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:{{stack}}" // error format
+					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:\n{{stack}}" // error format
 					          }	
 					],
 					dateformat : "HH:MM:ss.L",
 					preprocess :  function(data){
-						if(data.title==='error'){
-							var callstack = '',len=data.stack.length;
-							for(var i=0; i<len; i+=1){
-								callstack += '\n'+data.stack[i];
-							}
-							data.stacklist = callstack;
-						}
-						
 						data.title = data.title.toUpperCase();
 					}
 				});
@@ -412,6 +404,9 @@ logger.log(obj);
 
 	
 ## History
+### 0.6.2
+
+* fixed: change stack from array to string, and fixed example2.js
 
 ### 0.6.1
 

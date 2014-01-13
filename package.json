@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://github.com/baryon/tracer.git"
   },
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": "LI Long <lilong@gmail.com>",
   "dependencies": {
     "dateformat": "1.0.2-1.2.3",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "expresso": "0.9.2",
-    "mongoskin": ">= 0.3.0"
+    "mongoskin": "0.3.0"
   },
   "main": "./lib/index",
   "keywords": ["log", "logger", "trace"],

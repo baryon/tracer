@@ -1,27 +1,15 @@
 var logger = require('tracer')
-		.colorConsole(
+		.console(
 				{
 					format : [
 					          "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})", //default format
 					          {
-					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:{{stacklist}}" // error format
+					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:\n{{stack}}" // error format
 					          }	
 					],
 					dateformat : "HH:MM:ss.L",
 					preprocess :  function(data){
-						if(data.title==='error'){
-							var callstack = '',len=data.stack.length;
-							for(var i=0; i<len; i+=1){
-								callstack += '\n'+data.stack[i];
-							}
-							data.stacklist = callstack;
-						}
-						
 						data.title = data.title.toUpperCase();
-						
-						if(data.args[0]=='hello'){
-							data.message += ' node.js';
-						}
 					}
 				});
 
