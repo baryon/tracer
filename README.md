@@ -177,7 +177,7 @@ var logger = require('tracer')
 					format : [
 					          "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})", //default format
 					          {
-					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:{{stacklist}}" // error format
+					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:{{stack}}" // error format
 					          }	
 					],
 					dateformat : "HH:MM:ss.L",
