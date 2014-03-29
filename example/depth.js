@@ -3,21 +3,23 @@ var config = {
 	strategy : 'console',
 	setting : {
 		level : 'log',
-		showHidden : true, //the object's non-enumerable properties will be shown too
-		depth : null
+		inspectOpt: {
+			showHidden : true, //the object's non-enumerable properties will be shown too
+			depth : null
+		}
 	}
 };
 
 
 var obj =  {Request: 
-   [ { IsValid: [ 'True' ],
-       ItemSearchRequest: 
-        [ { ResponseGroup: [ 'Small', 'OfferSummary' ],
-            Sort: [ 'salesrank' ],
-            SearchIndex: [ 'DVD']
-          }
-        ]
-     } ] };
+	 [ { IsValid: [ 'True' ],
+			 ItemSearchRequest: 
+				[ { ResponseGroup: [ 'Small', 'OfferSummary' ],
+						Sort: [ 'salesrank' ],
+						SearchIndex: [ 'DVD']
+					}
+				]
+		 } ] };
 
 var logger = require('tracer').console();
 logger.log(obj);
