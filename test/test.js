@@ -26,6 +26,29 @@ exports["simple message"] = function() {
 	assert.equal(o['output'], 'hello');
 }
 
+exports["inspect depth"] = function() {
+	var logger = require('../').console({
+		format : "{{message}}",
+		transport : function(data) {
+			console.log(data.output);
+			return data;
+		},
+		inspectOpt : {
+			showHidden : false,
+			depth: 1
+		}
+	});
+	var o = logger.log({
+		i1 : 'value',
+		i2 : {
+			i21 : 'val21',
+			i22 : {
+				i31 : 'val31'
+			}
+		}
+	});
+	assert.equal(o['output'], "{ i1: 'value', i2: { i21: 'val21', i22: [Object] } }");
+}
 
 exports["simple color message"] = function() {
 	var logger = require('../').colorConsole({
