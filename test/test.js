@@ -47,10 +47,10 @@ exports["console log method"] = function() {
 			return data;
 		}
 	});
-	var o = logger.log('hello %s %d', 'world', 123);
+	var o = logger.log('hello %s %d %j', 'world', 123, {j:'val'});
 	assert.equal(o['title'], 'log');
 	assert.equal(o['file'], '');//the format don't include "file", so can't get it
-	assert.equal(o['output'], 'hello world 123');
+	assert.equal(o['output'], 'hello world 123 {"j":"val"}');
 }
 
 exports["custom format"] = function() {
