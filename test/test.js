@@ -26,6 +26,29 @@ exports["simple message"] = function() {
 	assert.equal(o['output'], 'hello');
 }
 
+exports["inspect depth"] = function() {
+	var logger = require('../').console({
+		format : "{{message}}",
+		transport : function(data) {
+			console.log(data.output);
+			return data;
+		},
+		inspectOpt : {
+			showHidden : false,
+			depth: 1
+		}
+	});
+	var o = logger.log({
+		i1 : 'value',
+		i2 : {
+			i21 : 'val21',
+			i22 : {
+				i31 : 'val31'
+			}
+		}
+	});
+	assert.equal(o['output'], "{ i1: 'value', i2: { i21: 'val21', i22: [Object] } }");
+}
 
 exports["simple color message"] = function() {
 	var logger = require('../').colorConsole({
@@ -47,10 +70,10 @@ exports["console log method"] = function() {
 			return data;
 		}
 	});
-	var o = logger.log('hello %s %d', 'world', 123);
+	var o = logger.log('hello %s %d %j %t', 'world', 123, {j:'val'}, {t:'val'});
 	assert.equal(o['title'], 'log');
 	assert.equal(o['file'], '');//the format don't include "file", so can't get it
-	assert.equal(o['output'], 'hello world 123');
+	assert.equal(o['output'], 'hello world 123 {"j":"val"} { t: \'val\' }');
 }
 
 exports["custom format"] = function() {
