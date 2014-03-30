@@ -14,6 +14,23 @@ exports["simple"] = function() {
 	assert.equal(o['level'], 3);
 }
 
+exports["stack index"] = function() {
+	var logger = require('../').console({
+		stackIndex: 1,
+		transport : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	var logMgr = function(type, msg) {
+		return logger[type](msg);
+	};
+	var o = logMgr('info', 'hello');
+	assert.equal(o['message'], 'hello');
+	assert.equal(o['file'], 'test.js');
+	assert.equal(o['line'], 28);
+}
+
 exports["simple message"] = function() {
 	var logger = require('../').console({
 		format : "{{message}}",

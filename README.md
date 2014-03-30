@@ -384,7 +384,7 @@ var obj =  {Request:
      } ] };
      
 var logger = require('tracer').console({
-		inspectOpt : {
+		inspectOpt: {
 			showHidden : true, //the object's non-enumerable properties will be shown too
 			depth : null //tells inspect how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Defaults to 2. To make it recurse indefinitely pass null.
 		}
@@ -400,6 +400,33 @@ logger.log(obj);
 //             SearchIndex: [ 'DVD', [length]: 1 ] },
 //           [length]: 1 ] },
 //      [length]: 1 ] }
+     
+```
+
+### Specify the stack index for file info
+
+Fix `file`, `path`, and `line` info width `stackIndex`.
+It is userful for development package.
+
+```javascript
+     
+var logger = require('tracer').console({
+		stackIndex : 0 // default 0
+	});
+var logger2 = require('tracer').console({
+		stackIndex : 1
+	});
+var logMgr = function(type, msg) {
+		return logger[type](msg);
+	};
+var logMgr2 = function(type, msg) {
+		return logger2[type](msg);
+	};
+
+logger.log('hello'); // the line info is right
+logger2.log('hello'); // the line info is error
+logMgr('log', 'hello'); // the line info is error
+logMgr2('log', 'hello'); // the line info is right
      
 ```
 
