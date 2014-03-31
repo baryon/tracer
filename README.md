@@ -406,6 +406,11 @@ logger.log(obj);
 
 	
 ## History
+### 0.7.0
+
+* fixed: change inspect format, using new format of node.js 0.10. (Thanks Bacra)
+* fixed: now support node.js 0.10 and above, NO Support 0.8 and 0.6
+
 ### 0.6.2
 
 * fixed: change stack from array to string, and fixed example2.js
