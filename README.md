@@ -384,8 +384,10 @@ var obj =  {Request:
      } ] };
      
 var logger = require('tracer').console({
-		showHidden : true, //the object's non-enumerable properties will be shown too
-		depth : null //tells inspect how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Defaults to 2. To make it recurse indefinitely pass null.
+		inspectOpt : {
+			showHidden : true, //the object's non-enumerable properties will be shown too
+			depth : null //tells inspect how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Defaults to 2. To make it recurse indefinitely pass null.
+		}
 	});
 logger.log(obj);
 
