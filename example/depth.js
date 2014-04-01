@@ -23,6 +23,8 @@ var obj =  {Request:
 
 var logger = require('tracer').console();
 logger.log(obj);
+logger.log("%s", obj);
+logger.log("%t", obj);
 
 // 2013-09-30T04:30:44.912Z <log> depth.js:23 (Object.<anonymous>) { Request: [ { IsValid: [Object], ItemSearchRequest: [Object] } ] }
 
