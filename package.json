@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "expresso": "0.9.2",
-    "mongoskin": "0.3.0"
+    "mongoskin": "0.3.0",
+    "cli-color": "*"
   },
   "main": "./lib/index",
   "keywords": ["log", "logger", "trace"],
