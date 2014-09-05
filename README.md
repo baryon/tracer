@@ -435,7 +435,8 @@ logMgr2('log', 'hello'); // the line info is right
 ## History
 ### 0.7.2
 
-* fixed: change log dateformat from UTC to LOCAL iso format
+* fixed: change log dateformat from UTC to LOCAL iso format (Suggest by felixhao28)
+* fixed: change color package from colors to cli-color (Suggest by jeffreydwalter)
 
 ### 0.7.1
 

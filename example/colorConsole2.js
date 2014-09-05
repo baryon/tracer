@@ -2,16 +2,16 @@ var clc = require('cli-color');
 
 var conf = {
 		filters : {
-			log : clc.black.bgWhite,
-			trace : clc.magenta,
-			debug : clc.cyan,
-			info : clc.green,
-			warn : clc.yellow,
-			error : clc.red.bold
+			log : function(str){ return clc.black.bgWhite(str) },
+			trace : function(str){ return clc.magenta(str) },
+			debug : function(str){ return clc.cyan(str) },
+			info : function(str){ return clc.green(str) },
+			warn : function(str){ return clc.xterm(202).bgXterm(236)(str) },
+			error : function(str){ return clc.red.bold(str) }
 		}
 	};
 
-
+console.log(clc.black.bgWhite('hello'), clc.black.bgWhite('world'));
 var logger = require('tracer').console(conf);
 logger.log('hello');
 logger.trace('hello', 'world');
