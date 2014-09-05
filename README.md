@@ -433,6 +433,10 @@ logMgr2('log', 'hello'); // the line info is right
 
 	
 ## History
+### 0.7.2
+
+* fixed: change log dateformat from UTC to LOCAL iso format
+
 ### 0.7.1
 
 * added: format add `%t` placeholder (Thanks Bacra)

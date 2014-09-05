@@ -225,3 +225,20 @@ exports["set level to max value"] = function() {
 	assert.ok(!logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
 	assert.ok(!logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
 }
+
+exports["loop"] = function() {
+	var logger = require('../').console({
+		transport : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	for(var i=0; i<100; i++){
+		var o = logger.info('hello');
+		assert.equal(o['message'], 'hello');
+		assert.equal(o['file'], 'test.js');
+		assert.equal(o['line'], 237);
+		assert.equal(o['level'], 3);
+	}
+}
+
