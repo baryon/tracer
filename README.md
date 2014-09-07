@@ -433,6 +433,9 @@ logMgr2('log', 'hello'); // the line info is right
 
 	
 ## History
+### 0.7.3
+* restored: use colors package replace cli-color, because some bugs and a lot of dependencies in cli-color. ref colorConsole2.js example.
+
 ### 0.7.2
 
 * fixed: change log dateformat from UTC to LOCAL iso format (Suggest by felixhao28)
