@@ -6,12 +6,12 @@
     "type": "git",
     "url": "git://github.com/baryon/tracer.git"
   },
-  "version": "0.7.3",
+  "version": "0.7.4",
   "author": "LI Long <lilong@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "dateformat": "1.0.2-1.2.3",
-    "colors": "~0.6.2",
+    "colors": "1.0.3",
     "tinytim": ">=0.1.0"
   },
   "devDependencies": {
