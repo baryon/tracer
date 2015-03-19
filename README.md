@@ -221,21 +221,6 @@ function f1(str) {
 }
 ```
 
-or you can use the second parameter
-
-```javascript
-function f1(str, data) {
-	if( data.title === 'error' ){
-		//do some thing, example write to database, you can use async write to do this
-		
-		//if you don't want continue other filter, then 
-		//return false; 
-	}
-	return str.toUpperCase();
-}
-```
-
-
 About [Colors.js](https://github.com/Marak/colors.js)
 
 ```javascript
@@ -433,6 +418,10 @@ logMgr2('log', 'hello'); // the line info is right
 
 	
 ## History
+### 0.7.4
+* fixed: use the lastest package of colors v1.0.3.
+* fixed: removed filter's second parameter
+
 ### 0.7.3
 * restored: use colors package replace cli-color, because some bugs and a lot of dependencies in cli-color. ref colorConsole2.js example.
 

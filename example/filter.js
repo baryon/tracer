@@ -1,12 +1,6 @@
-var colors = require('colors');
+var colors = require('colors/safe');
 
-function f1(str, data) {
-	if( data.title === 'error' ){
-		// do some thing, ex: write to database
-		
-		// if you don't want continue other filter, then
-		//return false; 
-	}
+function f1(str) {
 	return str.toUpperCase();
 }
 
@@ -16,7 +10,7 @@ var logger = require('tracer').colorConsole({
 	           //the last item can be custom filter. here is "warn" and "error" filter
 	           {
 	        	   warn : colors.yellow,
-	        	   error : [f1, colors.red, colors.bold ]
+	        	   error : [f1, colors.red.bold ]
 	           }
 	]
 });
