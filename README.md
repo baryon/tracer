@@ -432,7 +432,7 @@ logMgr2('log', 'hello'); // the line info is right
 
 ### 0.7.1
 
-* added: format add `%t` placeholder (Thanks Bacra)
+* added: format add `%j` placeholder (Thanks Bacra)
 * added: add stackIndex opt to specify the index of stack (Thanks Bacra)
 
 ### 0.7.0
