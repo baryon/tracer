@@ -429,7 +429,30 @@ tracer.close();
      
 ```
 
-Read examples please.
+notice: 
+if you set level in initialize, you can't change more lower level than the initial level.
+
+```javascript
+var tracer = require('tracer');
+var logger = tracer.console({level:'warn'});
+
+logger.log('hello'); //nothing output
+
+tracer.setLevel(0); //dont work.
+logger.log('hello'); //nothing output
+
+tracer.setLevel('error'); //it works.
+logger.warn('hello'); //nothing output
+
+logger.error('hello'); //'hello'
+
+     
+```
+
+
+
+Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master/example/setLevel.js)
+
 
 	
 ## History
