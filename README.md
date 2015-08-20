@@ -415,9 +415,28 @@ logMgr2('log', 'hello'); // the line info is right
      
 ```
 
+### setLevel and close
+
+
+setLevel and close methods to dynamically change the log level.
+these are global settings, affect all output that are created via tracer 
+
+```javascript
+var tracer = require('tracer');
+tracer.setLevel(2); //or tracer.setLevel('debug');
+//... ...
+tracer.close();
+     
+```
+
+Read examples please.
 
 	
 ## History
+### 0.8.0
+* added: setLevel method to dynamically change the log level. thanks @madarche, #30
+* added: close method to end all of the writable streams. thanks @loht, #31
+
 ### 0.7.4
 * fixed: use the lastest package of colors v1.0.3.
 * fixed: removed filter's second parameter
@@ -427,17 +446,17 @@ logMgr2('log', 'hello'); // the line info is right
 
 ### 0.7.2
 
-* fixed: change log dateformat from UTC to LOCAL iso format (Suggest by felixhao28)
-* fixed: change color package from colors to cli-color (Suggest by jeffreydwalter)
+* fixed: change log dateformat from UTC to LOCAL iso format (Suggest by @felixhao28)
+* fixed: change color package from colors to cli-color (Suggest by @jeffreydwalter)
 
 ### 0.7.1
 
-* added: format add `%j` placeholder (Thanks Bacra)
-* added: add stackIndex opt to specify the index of stack (Thanks Bacra)
+* added: format add `%j` placeholder (Thanks @Bacra)
+* added: add stackIndex opt to specify the index of stack (Thanks @Bacra)
 
 ### 0.7.0
 
-* fixed: change inspect format, using new format of node.js 0.10. (Thanks Bacra)
+* fixed: change inspect format, using new format of node.js 0.10. (Thanks @Bacra)
 * fixed: now support node.js 0.10 and above, NO Support 0.8 and 0.6
 
 ### 0.6.2
@@ -447,7 +466,7 @@ logMgr2('log', 'hello'); // the line info is right
 ### 0.6.1
 
 * fixed: get the filename correctly on windows. thanks Tom Carchrae
-* added: added missing repository field. thanks madarche  
+* added: added missing repository field. thanks @madarche  
 
 ### 0.6.0
 

@@ -242,3 +242,54 @@ exports["loop"] = function() {
 	}
 }
 
+exports["setLevel 1"] = function() {
+	var logger = require('../').console({
+		transport : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	require('../').setLevel(2);
+	assert.ok(!logger.log('hello'));
+	assert.ok(!logger.trace('hello', 'world'));
+	assert.ok(logger.debug('hello %s',  'world', 123));
+	assert.ok(logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+
+}
+
+exports["setLevel 2"] = function() {
+	var logger = require('../').console({
+		transport : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	require('../').setLevel('debug');
+	assert.ok(!logger.log('hello'));
+	assert.ok(!logger.trace('hello', 'world'));
+	assert.ok(logger.debug('hello %s',  'world', 123));
+	assert.ok(logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+
+}
+
+exports["close"] = function() {
+	var logger = require('../').console({
+		transport : function(data) {
+			console.log(data.output);
+			return data;
+		}
+	});
+	require('../').close();
+	assert.ok(!logger.log('hello'));
+	assert.ok(!logger.trace('hello', 'world'));
+	assert.ok(!logger.debug('hello %s',  'world', 123));
+	assert.ok(!logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
+	assert.ok(!logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
+	assert.ok(!logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+
+}
+
