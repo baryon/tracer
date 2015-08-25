@@ -9,7 +9,7 @@ A powerful and customizable logging library for node.js.
 * print log messages with timstamp, file name, method name, line number, path or call stack
 * be customized output format with micro-template and timestamp format
 * support user-defined logging levels
-* add easily any transport 
+* add easily any transport
 * support filter functions, so print statements in full color and font (color console)
 
 ##Install
@@ -22,20 +22,20 @@ Usage
 -----
 Add to your code:
 
-Simple Console  
+Simple Console
 
 ```javascript
 var logger = require('tracer').console();
 ```
 
 
-Color Console  
+Color Console
 
 ```javascript
 var logger = require('tracer').colorConsole();
 ```
 
-Set Output Level  
+Set Output Level
 
 ```javascript
 var logger = require('tracer').colorConsole({level:'warn'});
@@ -59,7 +59,7 @@ logger.info('hello %s %d',  'world', 123, {foo:'bar'});
 logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'});
 logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
-$ node example/console.js 
+$ node example/console.js
 2012-03-02T13:35:22.83Z <log> console.js:3 (Object.<anonymous>) hello
 2012-03-02T13:35:22.85Z <trace> console.js:4 (Object.<anonymous>) hello world
 2012-03-02T13:35:22.85Z <debug> console.js:5 (Object.<anonymous>) hello world 123
@@ -129,32 +129,32 @@ logger.info('hello %s %d',  'world', 123, {foo:'bar'});
 logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'});
 logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
-//$ node example/level.js 
+//$ node example/level.js
 //2012-03-02T13:41:33.29Z <warn> level.js:6 (Object.<anonymous>) hello world 123 {"foo":"bar"}
 //2012-03-02T13:41:33.30Z <error> level.js:7 (Object.<anonymous>) hello world 123 {"foo":"bar"} [ 1, 2, 3, 4 ] function Object() { [native code] }
 
-//log,trace, debug and info level was not ouputed 
+//log,trace, debug and info level was not ouputed
 
 ```
 
 
 
 ### Customize output format
-format tag:   
+format tag:
 
-*  timestamp: current time    
-*  title: method name, default is 'log', 'trace', 'debug', 'info', 'warn', 'error'   
-*  level: method level, default is 'log':0, 'trace':1, 'debug':2, 'info':3, 'warn':4, 'error':5   
-*  message: printf message, support %s string, %d number, %j JSON and auto inspect   
-*  file: file name   
-*  line: line number   
-*  pos: postion   
-*  path: file's path   
-*  method: method name of caller   
-*  stack: call stack message  
-   
-we use tinytim micro-template system to output log.  see details [tinytim](https://github.com/baryon/node-tinytim).  
-and, we use [Date Format](http://blog.stevenlevithan.com/archives/date-time-format) to format datetime.  
+*  timestamp: current time
+*  title: method name, default is 'log', 'trace', 'debug', 'info', 'warn', 'error'
+*  level: method level, default is 'log':0, 'trace':1, 'debug':2, 'info':3, 'warn':4, 'error':5
+*  message: printf message, support %s string, %d number, %j JSON and auto inspect
+*  file: file name
+*  line: line number
+*  pos: position
+*  path: file's path
+*  method: method name of caller
+*  stack: call stack message
+
+we use tinytim micro-template system to output log.  see details [tinytim](https://github.com/baryon/node-tinytim).
+and, we use [Date Format](http://blog.stevenlevithan.com/archives/date-time-format) to format datetime.
 
 
 
@@ -178,7 +178,7 @@ var logger = require('tracer')
 					          "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})", //default format
 					          {
 					        	  error : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:\n{{stack}}" // error format
-					          }	
+					          }
 					],
 					dateformat : "HH:MM:ss.L",
 					preprocess :  function(data){
@@ -187,8 +187,8 @@ var logger = require('tracer')
 				});
 ```
 
-the preprocess method is a choice for changing tag.  
- 
+the preprocess method is a choice for changing tag.
+
 
 
 ### Customize output methods
@@ -211,7 +211,7 @@ logger.log5('hello %s %d', 'world', 123);
 
 
 
-### Customize filters 
+### Customize filters
 
 each filtes function was called. the function is synchronous and must be like
 
@@ -254,7 +254,7 @@ the filter support key-function pair, example: [color_console.js](https://github
 ```
 
 and the filters is an array, the last item can be custom filter. see example:[filter.js](https://github.com/baryon/tracer/blob/master/example/filter.js)
-	
+
 ### Log File Transport
 ```javascript
 var fs = require('fs');
@@ -358,16 +358,16 @@ module.exports = function(conf) {
 ### Customize output Object's properties
 
 ```javascript
-var obj =  {Request: 
+var obj =  {Request:
    [ { IsValid: [ 'True' ],
-       ItemSearchRequest: 
+       ItemSearchRequest:
         [ { ResponseGroup: [ 'Small', 'OfferSummary' ],
             Sort: [ 'salesrank' ],
             SearchIndex: [ 'DVD']
           }
         ]
      } ] };
-     
+
 var logger = require('tracer').console({
 		inspectOpt: {
 			showHidden : true, //the object's non-enumerable properties will be shown too
@@ -376,7 +376,7 @@ var logger = require('tracer').console({
 	});
 logger.log(obj);
 
-// 
+//
 // 2013-09-30T04:30:44.927Z <log> depth.js:26 (Object.<anonymous>) { Request:
 //    [ { IsValid: [ 'True', [length]: 1 ],
 //        ItemSearchRequest:
@@ -385,7 +385,7 @@ logger.log(obj);
 //             SearchIndex: [ 'DVD', [length]: 1 ] },
 //           [length]: 1 ] },
 //      [length]: 1 ] }
-     
+
 ```
 
 ### Specify the stack index for file info
@@ -394,7 +394,7 @@ Fix `file`, `path`, and `line` info width `stackIndex`.
 It is userful for development package.
 
 ```javascript
-     
+
 var logger = require('tracer').console({
 		stackIndex : 0 // default 0
 	});
@@ -412,24 +412,24 @@ logger.log('hello'); // the line info is right
 logger2.log('hello'); // the line info is error
 logMgr('log', 'hello'); // the line info is error
 logMgr2('log', 'hello'); // the line info is right
-     
+
 ```
 
 ### setLevel and close
 
 
 setLevel and close methods to dynamically change the log level.
-these are global settings, affect all output that are created via tracer 
+these are global settings, affect all output that are created via tracer
 
 ```javascript
 var tracer = require('tracer');
 tracer.setLevel(2); //or tracer.setLevel('debug');
 //... ...
 tracer.close();
-     
+
 ```
 
-notice: 
+notice:
 if you set level in initialize, you can't change more lower level than the initial level.
 
 ```javascript
@@ -446,7 +446,7 @@ logger.warn('hello'); //nothing output
 
 logger.error('hello'); //'hello'
 
-     
+
 ```
 
 
@@ -454,7 +454,7 @@ logger.error('hello'); //'hello'
 Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master/example/setLevel.js)
 
 
-	
+
 ## History
 ### 0.8.0
 * added: setLevel method to dynamically change the log level. thanks @madarche, #30
@@ -489,49 +489,49 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 ### 0.6.1
 
 * fixed: get the filename correctly on windows. thanks Tom Carchrae
-* added: added missing repository field. thanks @madarche  
+* added: added missing repository field. thanks @madarche
 
 ### 0.6.0
 
-* feature: add showHidden and depth option for showing object's properties.  
+* feature: add showHidden and depth option for showing object's properties.
 
 ### 0.5.1
 
-* feature: add args into data object, now we can check args in preprocess, see example format2.js, merge from yasuyk04/work   
+* feature: add args into data object, now we can check args in preprocess, see example format2.js, merge from yasuyk04/work
 
 ### 0.5.0
 
-* performance: speed up when the format don't include method,path,line,pos,file, thanks sharonjl's issue report  
+* performance: speed up when the format don't include method,path,line,pos,file, thanks sharonjl's issue report
 
 ### 0.4.2
 
-* fixed: debug color from blue to cyan  
+* fixed: debug color from blue to cyan
 
 ### 0.4.1
 
-* fixed: default timestamp is ISO UTC format.  
+* fixed: default timestamp is ISO UTC format.
 
 ### 0.4.0
 
-* feature: support dailyfile method, added some examples  
+* feature: support dailyfile method, added some examples
 * feature: add preprocess custom method for changing  tags before format
 
 ### 0.3.5
 
-* fixed bug: can't get method/line number in express  
+* fixed bug: can't get method/line number in express
 
 ### 0.3.4
 
-* use [tinytim package](https://github.com/baryon/node-tinytim)  
+* use [tinytim package](https://github.com/baryon/node-tinytim)
 
 ### 0.3.3
 
-* spell missing (transpot->transport)  
+* spell missing (transpot->transport)
 
 ### 0.3.2
 
-* speed-up for _log function  
-* add some test codes  
+* speed-up for _log function
+* add some test codes
 
 ### 0.3.1
 
@@ -555,7 +555,7 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 
 * Initial Tracer implementation.
 
-## License 
+## License
 
 (The MIT License)
 
