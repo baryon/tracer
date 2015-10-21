@@ -482,6 +482,10 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 
 
 ## History
+### 0.8.1
+* added: Adding support for Multiple Transports. #36 thanks @AmitThakkar
+* fixed: dailyfile auto create folder #37. thanks @klesh
+
 ### 0.8.0
 * added: setLevel method to dynamically change the log level. thanks @madarche, #30
 * added: close method to end all of the writable streams. thanks @loht, #31
