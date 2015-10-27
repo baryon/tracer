@@ -82,7 +82,7 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
 ### Daily Log
 ```javascript
-var logger = require('tracer').dailyfile({root:'.'});
+var logger = require('tracer').dailyfile({root:'.', maxLogFiles: 10});
 
 logger.log('hello');
 logger.trace('hello', 'world');
