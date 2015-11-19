@@ -482,6 +482,11 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 
 
 ## History
+
+### 0.8.2
+* added: Defining a field for max file days filea. #35 thanks @AmitThakkar
+
+
 ### 0.8.1
 * added: Adding support for Multiple Transports. #36 thanks @AmitThakkar
 * fixed: dailyfile auto create folder #37. thanks @klesh
