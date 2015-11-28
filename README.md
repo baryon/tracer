@@ -6,7 +6,7 @@ A powerful and customizable logging library for node.js.
 ##Features
 -----
 
-* print log messages with timstamp, file name, method name, line number, path or call stack
+* print log messages with timestamp, file name, method name, line number, path or call stack
 * be customized output format with micro-template and timestamp format
 * support user-defined logging levels
 * add easily any transport
