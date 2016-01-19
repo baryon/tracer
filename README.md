@@ -262,7 +262,7 @@ var fs = require('fs');
 var logger = require('tracer').console({
 	transport : function(data) {
 		console.log(data.output);
-		fs.appendFile('./file.log', data.output, (err) => {
+		fs.appendFile('./file.log', data.output + '\n', (err) => {
 			if (err) throw err;
 		});
 	}
@@ -337,7 +337,7 @@ var fs = require('fs');
 var logger = require('tracer').console({
 	transport: [
 		function (data) {
-			fs.appendFile('./file.log', data.output, (err) => {
+			fs.appendFile('./file.log', data.output + '\n', (err) => {
 				if (err) throw err;
 			});
 		},
