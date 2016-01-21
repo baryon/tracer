@@ -1,6 +1,6 @@
 // Run as:
 // $> node stress.js
-
+"use strict";
 function stress_log(log) {
     var i;
     for (i = 0; i < 100000; ++i) {

@@ -1,3 +1,4 @@
+"use strict";
 var bb = require('./setLevelAnother')
 var tracer = require('tracer');
 var logger = tracer.console({level:'warn'});

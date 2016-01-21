@@ -1,3 +1,4 @@
+"use strict";
 var logger = require('tracer').colorConsole();
 
 exports.hi = function() {

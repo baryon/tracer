@@ -1,4 +1,4 @@
-
+"use strict";
 var config = {
 	strategy : 'console',
 	setting : {

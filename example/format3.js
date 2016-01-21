@@ -1,3 +1,4 @@
+"use strict";
 var tracer = require('tracer')
 
 function test(id){

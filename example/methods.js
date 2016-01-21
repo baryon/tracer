@@ -1,3 +1,4 @@
+"use strict";
 var colors = require('colors');
 
 var logger = require('tracer').colorConsole({

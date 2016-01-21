@@ -1,3 +1,4 @@
+"use strict";
 var colors = require('colors'); //~1.0.3
 var tracer = require('tracer');
 

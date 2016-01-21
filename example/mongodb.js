@@ -1,3 +1,4 @@
+"use strict";
 var mongo = require('mongoskin');
 var db = mongo.db("127.0.0.1:27017/test?auto_reconnect");
 
