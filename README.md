@@ -15,7 +15,7 @@ A powerful and customizable logging library for node.js.
 ##Install
 -----
 ```javascript
-npm install tracer
+npm install tracer --save
 ```
 
 Usage
@@ -262,11 +262,8 @@ var fs = require('fs');
 var logger = require('tracer').console({
 	transport : function(data) {
 		console.log(data.output);
-		fs.open('./file.log', 'a', 0666, function(e, id) {
-			fs.write(id, data.output+"\n", null, 'utf8', function() {
-				fs.close(id, function() {
-				});
-			});
+		fs.appendFile('./file.log', data.output + '\n', (err) => {
+			if (err) throw err;
 		});
 	}
 });
@@ -340,11 +337,8 @@ var fs = require('fs');
 var logger = require('tracer').console({
 	transport: [
 		function (data) {
-			fs.open('./file.log', 'a', 0666, function (e, id) {
-				fs.write(id, data.output + "\n", null, 'utf8', function () {
-					fs.close(id, function () {
-					});
-				});
+			fs.appendFile('./file.log', data.output + '\n', (err) => {
+				if (err) throw err;
 			});
 		},
 		function(data) {
