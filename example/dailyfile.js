@@ -1,4 +1,4 @@
-
+"use strict";
 var logger = require('tracer').dailyfile({root:'.'});
 
 logger.log('hello');

@@ -1,3 +1,4 @@
+"use strict";
 var assert = require("assert");
 
 exports["simple"] = function() {
@@ -10,7 +11,7 @@ exports["simple"] = function() {
 	var o = logger.info('hello');
 	assert.equal(o['message'], 'hello');
 	assert.equal(o['file'], 'test.js');
-	assert.equal(o['line'], 10);
+	assert.equal(o['line'], 11);
 	assert.equal(o['level'], 3);
 }
 
@@ -28,7 +29,7 @@ exports["stack index"] = function() {
 	var o = logMgr('info', 'hello');
 	assert.equal(o['message'], 'hello');
 	assert.equal(o['file'], 'test.js');
-	assert.equal(o['line'], 28);
+	assert.equal(o['line'], 29);
 }
 
 exports["simple message"] = function() {
@@ -237,7 +238,7 @@ exports["loop"] = function() {
 		var o = logger.info('hello');
 		assert.equal(o['message'], 'hello');
 		assert.equal(o['file'], 'test.js');
-		assert.equal(o['line'], 237);
+		assert.equal(o['line'], 238);
 		assert.equal(o['level'], 3);
 	}
 }

@@ -1,12 +1,13 @@
 /**
  * Created by Amit Thakkar on 10/9/15.
  */
+"use strict";
 (function (require) {
     var fs = require('fs');
     var logger = require('tracer').console({
         transport: [
             function (data) {
-                fs.open('./file.log', 'a', 0666, function (e, id) {
+                fs.open('./file.log', 'a', parseInt('0644', 8), function (e, id) {
                     fs.write(id, data.output + "\n", null, 'utf8', function () {
                         fs.close(id, function () {
                         });

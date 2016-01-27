@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-
+"use strict";
 var express = require('express'), routes = require('./routes'), conf = require('./config'), logger = require('tracer')[conf.log.strategy]
 		(conf.log.setting);
 var app = module.exports = express.createServer();

@@ -1,3 +1,4 @@
+"use strict";
 var colors = require('colors/safe');
 
 function f1(str) {

@@ -1,4 +1,4 @@
-
+"use strict";
 var logger = require('tracer').console();
 logger.log('hello');
 logger.trace('hello', 'world');

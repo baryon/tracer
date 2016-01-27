@@ -1,3 +1,4 @@
+"use strict";
 var fs = require('fs');
 
 var logger = require('tracer').console({
@@ -6,7 +7,9 @@ var logger = require('tracer').console({
 			var logStream = fs.createWriteStream("./stream.log", {
 			    flags: "a",
 			    encoding: "utf8",
-			    mode: 0666
+			    mode: parseInt('0644', 8)
+			    // after the update of node notation will be :
+			    // mode: 0o644 
 			});
 			logStream.write(data.output+"\n");
 			logStream.end();

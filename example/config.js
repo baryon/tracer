@@ -1,3 +1,4 @@
+"use strict";
 var conf = {
 		log_dev : {
 			strategy : 'colorConsole',
