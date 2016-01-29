@@ -477,6 +477,14 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 
 ## History
 
+### 0.8.3
+* fixed: Got extra data in the log file. #45 thanks @JohnSmithDr 
+* merged: Add Strict mode and EsLint from @HakmiSofian 
+* merged: Change the log to file example to using `fs.appendFile()` instead.  from @twang2218  
+* merged: Enable use of tracer in strict mode from @madarche  
+* merged: Added getter for log level from @ColRad 
+* tested on node.js 4/5  
+
 ### 0.8.2
 * added: Defining a field for max file days filea. #35 thanks @AmitThakkar
 
