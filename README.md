@@ -87,7 +87,7 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
 ### Daily Log
 ```javascript
-var logger = require('tracer').dailyfile({root:'.', maxLogFiles: 10});
+var logger = require('tracer').dailyfile({root:'.', maxLogFiles: 10, allLogsFileName: 'myAppName'});
 
 logger.log('hello');
 logger.trace('hello', 'world');
@@ -97,7 +97,8 @@ logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'});
 logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 ```
 
-> dailylog will output all types log to diff files every day like log4j
+> dailylog will output all types log to diff files every day like log4j and if we provide allLogsFileName then all logs
+will be move to that file too.
 
 Advanced Example
 ---------------
