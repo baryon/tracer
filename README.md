@@ -483,7 +483,7 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 
 ## History
 
-### 0.8.6
+### 0.8.4-0.8.7
 * added some codes, details: #56 thanks @AmitThakkar
 
 ### 0.8.3
