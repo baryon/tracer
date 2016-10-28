@@ -294,3 +294,12 @@ exports["close"] = function() {
 
 }
 
+exports["simple"] = function() {
+	var logger = require('../').console();
+	var o = logger.log('hello');
+	assert.equal(o['message'], 'hello');
+	assert.equal(o['file'], 'test.js');
+	assert.equal(o['line'], 299);
+	assert.equal(o['level'], 0);
+}
+
