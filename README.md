@@ -483,6 +483,9 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 
 ## History
 
+### 0.8.6
+* added some codes, details: #56 thanks @AmitThakkar
+
 ### 0.8.3
 * fixed: Got extra data in the log file. #45 thanks @JohnSmithDr 
 * merged: Add Strict mode and EsLint from @HakmiSofian 
