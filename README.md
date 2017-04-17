@@ -1,4 +1,4 @@
-#tracer for node.js 
+# tracer for node.js 
 
 [![NPM version](http://img.shields.io/npm/v/tracer.svg)](https://www.npmjs.org/package/tracer)
 [![Dependency Status](https://david-dm.org/baryon/tracer.svg)](https://david-dm.org/baryon/tracer)
@@ -8,7 +8,7 @@
 A powerful and customizable logging library for node.js.
 
 ===========
-##Features
+## Features
 -----
 
 * print log messages with timestamp, file name, method name, line number, path or call stack
@@ -17,7 +17,7 @@ A powerful and customizable logging library for node.js.
 * add easily any transport
 * support filter functions, so print statements in full color and font (color console)
 
-##Install
+## Install
 -----
 ```javascript
 npm install tracer --save
