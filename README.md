@@ -149,8 +149,8 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 format tag:
 
 *  timestamp: current time
-*  title: method name, default is 'log', 'trace', 'debug', 'info', 'warn', 'error'
-*  level: method level, default is 'log':0, 'trace':1, 'debug':2, 'info':3, 'warn':4, 'error':5
+*  title: method name, default is 'log', 'trace', 'debug', 'info', 'warn', 'error','fatal'
+*  level: method level, default is 'log':0, 'trace':1, 'debug':2, 'info':3, 'warn':4, 'error':5, 'fatal':6
 *  message: printf message, support %s string, %d number, %j JSON and auto inspect
 *  file: file name
 *  line: line number
@@ -482,6 +482,11 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 
 
 ## History
+
+### 0.8.11
+* added fatal level, like log4j. #75 thanks @ds3783
+* fixed double-log file issue. #71 thanks @huangts
+* and something missed
 
 ### 0.8.4-0.8.7
 * added some codes, details: #56 thanks @AmitThakkar
