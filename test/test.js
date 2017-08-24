@@ -291,6 +291,7 @@ exports["close"] = function() {
 	assert.ok(!logger.info('hello %s %d',  'world', 123, {foo:'bar'}));
 	assert.ok(!logger.warn('hello %s %d %j', 'world', 123, {foo:'bar'}));
 	assert.ok(!logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object));
+	assert.ok(!logger.fatal('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object, logger));
 
 }
 
@@ -299,7 +300,7 @@ exports["simple"] = function() {
 	var o = logger.log('hello');
 	assert.equal(o['message'], 'hello');
 	assert.equal(o['file'], 'test.js');
-	assert.equal(o['line'], 299);
+	assert.equal(o['line'], 300);
 	assert.equal(o['level'], 0);
 }
 
