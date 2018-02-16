@@ -10,8 +10,9 @@
   "author": "LI Long <lilong@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "dateformat": "2.0.0",
     "colors": "1.1.2",
+    "dateformat": "2.0.0",
+    "mkdirp": "^0.5.1",
     "tinytim": "0.1.1"
   },
   "devDependencies": {
