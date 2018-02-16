@@ -480,8 +480,14 @@ logger.error('hello'); //'hello'
 Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master/example/setLevel.js)
 
 
+More features, please read examples.
 
 ## History
+
+### 0.8.12
+* added the ability to load the config from a file. #80 thanks @muthursyamburi
+* fix a bug for windows cant create dailyfile dir #77 by @moonrailgun
+* fixed. no fatal color in colorConsole missed. #79
 
 ### 0.8.11
 * added fatal level, like log4j. #75 thanks @ds3783

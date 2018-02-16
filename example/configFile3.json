@@ -1,0 +1,10 @@
+{
+    "format" : [
+              "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})", 
+              {
+                  "error" : "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})\nCall Stack:\n{{stack}}"
+              }	
+    ],
+    "dateformat" : "HH:MM:ss.L",
+    "level": "debug"
+}
