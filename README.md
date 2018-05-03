@@ -484,6 +484,11 @@ More features, please read examples.
 
 ## History
 
+### 0.8.15
+* Adding type definitions #84 by @kobim
+* Added data.rawoutput #83 by @Royalgamer06
+* recommended linting #82 by @elomariAchraf
+
 ### 0.8.12
 * added the ability to load the config from a file. #80 thanks @muthursyamburi
 * fix a bug for windows cant create dailyfile dir #77 by @moonrailgun
