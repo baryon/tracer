@@ -10,8 +10,8 @@
   "author": "LI Long <lilong@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "colors": "1.1.2",
-    "dateformat": "2.0.0",
+    "colors": "1.2.3",
+    "dateformat": "3.0.3",
     "mkdirp": "^0.5.1",
     "tinytim": "0.1.1"
   },
@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "test": "expresso test/*",
-    "lint:fix":"eslint --fix .",
+    "lint:fix": "eslint --fix .",
     "lint": "eslint .",
     "posttest": "npm run lint",
     "test:coverage": "istanbul cover expresso test/*.js",
