@@ -9,3 +9,11 @@ node_js:
   - 0.10
   - 8
   - 9
+
+matrix:
+  include:
+    - node_js: node
+      script:
+        - npm test
+        - npm install dtslint@^0.3
+        - npm run dtslint
