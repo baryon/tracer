@@ -479,10 +479,18 @@ logger.error('hello'); //'hello'
 
 Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master/example/setLevel.js)
 
+### support console methods
+support count, assert and table methods.
+Read examples please. [consoleMethods.js](https://github.com/baryon/tracer/blob/master/example/consoleMethods.js)
+
 
 More features, please read examples.
 
 ## History
+
+### 0.9.0
+* Added support all console methods, include count,assert and table. a new option 'supportConsoleMethods' is true default. example: consoleMethods.js in example folder. 
+
 
 ### 0.8.15
 * Adding type definitions #84 by @kobim
