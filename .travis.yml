@@ -9,6 +9,7 @@ node_js:
   - 0.10
   - 8
   - 9
+  - 10
 
 matrix:
   include:

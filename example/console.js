@@ -1,5 +1,5 @@
 "use strict";
-var logger = require('tracer').console();
+var logger = require('..').console();
 logger.log('hello');
 logger.trace('hello', 'world');
 logger.debug('hello %s',  'world', 123);
@@ -9,4 +9,5 @@ logger.error('hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 
 eval("logger.log('hello');");
 
+logger.table(['hello %s %d %j', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object]);
 
