@@ -18,7 +18,7 @@ export namespace Tracer {
     }
 
     type FilterFunction = (data: string) => string | void;
-    type TransportFunction = (data: string) => void;
+    type TransportFunction = (data: LogOutput) => void;
 
     interface LoggerConfig {
         /**
