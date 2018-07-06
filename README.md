@@ -488,6 +488,9 @@ More features, please read examples.
 
 ## History
 
+### 0.9.1
+* Fixed. transport function parameter data type is LogOutput not string #87 by @myfjdthink. 
+
 ### 0.9.0
 * Added support all console methods, include count,assert and table. a new option 'supportConsoleMethods' is true default. example: consoleMethods.js in example folder. 
 

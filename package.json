@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://github.com/baryon/tracer.git"
   },
-  "version": "0.9.0",
+  "version": "0.9.1",
   "author": "LI Long <lilong@gmail.com>",
   "license": "MIT",
   "dependencies": {
