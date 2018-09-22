@@ -46,7 +46,15 @@ export namespace Tracer {
         output: string;
     }
 
-    type LevelOption<T> = { log: T, trace: T, debug: T, info: T, warn: T, error: T, fatal: T };
+    interface Level<T> {
+        log?: T;
+        trace?: T;
+        debug?: T;
+        info?: T;
+        warn?: T;
+        error?: T;
+        fatal?: T;
+    }
     type FilterFunction = (data: string) => string | void;
     type TransportFunction = (data: LogOutput) => void;
 
@@ -67,12 +75,12 @@ export namespace Tracer {
          * - method: method name of caller
          * - stack: call stack message
          */
-        format?: string | [string, LevelOption<string>];
+        format?: string | [string, Level<string>];
         /**
          * Datetime format (Using `Date Format`)
          */
         dateformat?: string;
-        filters?: FilterFunction[] | LevelOption<FilterFunction> | (FilterFunction | LevelOption<FilterFunction>)[];
+        filters?: FilterFunction[] | Level<FilterFunction> | (FilterFunction | Level<FilterFunction>)[];
         level?: string | number;
         methods?: string[];
         /**
@@ -102,15 +110,7 @@ export namespace Tracer {
         transport?: TransportFunction | TransportFunction[];
     }
 
-    interface Logger {
-        log(...args: any[]): LogOutput;
-        trace(...args: any[]): LogOutput;
-        debug(...args: any[]): LogOutput;
-        info(...args: any[]): LogOutput;
-        warn(...args: any[]): LogOutput;
-        error(...args: any[]): LogOutput;
-        fatal(...args: any[]): LogOutput;
-    }
+    type Logger = Level<(...args: any[]) => LogOutput>
 }
 
 /**
@@ -127,8 +127,7 @@ export function dailyfile(config?: Tracer.LoggerConfig): Tracer.Logger;
 
 /**
  * End all the output.
- * 
- * Equivalent to: `tracer.setLevel(Number.MAX_VALUE)`
+ * Equivalent to: `tracer.setLevel(Number.MAX_VALUE)`.
  */
 export function close(): void;
 /**
