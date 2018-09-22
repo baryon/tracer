@@ -2,21 +2,51 @@
 
 export namespace Tracer {
     interface LogOutput {
+        /**
+         * Current time.
+         */
         timestamp: string;
         message: string;
+        /**
+         * Method name, default is `log`, `trace`, `debug`, `info`, `warn`, `error`, `fatal`.
+         */
         title: string;
+        /**
+         * Method level, default is `log`: 0, `trace`: 1, `debug`: 2, `info`: 3, `warn`: 4, `error`: 5, `fatal`: 6.
+         */
         level: number;
         args: any[];
+        /**
+         * Method name of caller.
+         */
         method: string;
+        /**
+         * File's path.
+         */
         path: string;
+        /**
+         * Line number.
+         */
         line: string;
+        /**
+         * Position.
+         */
         pos: string;
+        /**
+         * File's name.
+         */
         file: string;
+        /**
+         * Call stack message.
+         */
         stack: string[];
-        /* The output to be written */
+        /**
+         * The output to be written
+         */
         output: string;
     }
 
+    type LevelOption<T> = { log: T, trace: T, debug: T, info: T, warn: T, error: T, fatal: T };
     type FilterFunction = (data: string) => string | void;
     type TransportFunction = (data: LogOutput) => void;
 
@@ -37,15 +67,22 @@ export namespace Tracer {
          * - method: method name of caller
          * - stack: call stack message
          */
-        format?: string;
+        format?: string | [string, LevelOption<string>];
+        /**
+         * Datetime format (Using `Date Format`)
+         */
         dateformat?: string;
-        filters?: FilterFunction[];
-        level?: string;
+        filters?: FilterFunction[] | LevelOption<FilterFunction> | (FilterFunction | LevelOption<FilterFunction>)[];
+        level?: string | number;
         methods?: string[];
-        /* get the specified index of stack as file information. It is userful for development package. */
+        /**
+         * Get the specified index of stack as file information. It is useful for development package. 
+         */
         stackIndex?: number;
         inspectOpt?: {
-            /* if true then the object's non-enumerable properties will be shown too. Defaults to false */
+            /**
+             * If true then the object's non-enumerable properties will be shown too. Defaults to false.
+             */
             showHidden: boolean,
             /**
              * Tells inspect how many times to recurse while formatting the object.
@@ -55,9 +92,13 @@ export namespace Tracer {
             depth: number
         };
 
-        /* Pre-process the log object. */
+        /**
+         * Pre-process the log object.
+         */
         preprocess?(data: LogOutput): void;
-        /* Transport function (e.g. console.log) */
+        /**
+         * Transport function (e.g. console.log) 
+         */
         transport?: TransportFunction | TransportFunction[];
     }
 
@@ -72,10 +113,30 @@ export namespace Tracer {
     }
 }
 
+/**
+ * Create a console for printing color log.
+ * @param {Tracer.LoggerConfig} [config] Configurate how is log print.
+ */
 export function colorConsole(config?: Tracer.LoggerConfig): Tracer.Logger;
+/**
+ * Create a console without color.
+ * @param {Tracer.LoggerConfig} [config] Configurate how is log print.
+ */
 export function console(config?: Tracer.LoggerConfig): Tracer.Logger;
 export function dailyfile(config?: Tracer.LoggerConfig): Tracer.Logger;
 
+/**
+ * End all the output.
+ * 
+ * Equivalent to: `tracer.setLevel(Number.MAX_VALUE)`
+ */
 export function close(): void;
+/**
+ * Change the log level in run time, for all the output.
+ * @param {(number | string)} level
+ */
 export function setLevel(level: number | string): void;
+/**
+ * Get the current log level.
+ */
 export function getLevel(): number | string;
