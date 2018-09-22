@@ -80,11 +80,11 @@ export namespace Tracer {
          * Datetime format (Using `Date Format`)
          */
         dateformat?: string;
-        filters?: FilterFunction[] | Level<FilterFunction> | (FilterFunction | Level<FilterFunction>)[];
+        filters?: FilterFunction[] | Level<FilterFunction> | Array<FilterFunction | Level<FilterFunction>>;
         level?: string | number;
         methods?: string[];
         /**
-         * Get the specified index of stack as file information. It is useful for development package. 
+         * Get the specified index of stack as file information. It is useful for development package.
          */
         stackIndex?: number;
         inspectOpt?: {
@@ -105,34 +105,35 @@ export namespace Tracer {
          */
         preprocess?(data: LogOutput): void;
         /**
-         * Transport function (e.g. console.log) 
+         * Transport function (e.g. console.log)
          */
         transport?: TransportFunction | TransportFunction[];
     }
 
-    type Logger = Level<(...args: any[]) => LogOutput>
+    type Logger = Level<(...args: any[]) => LogOutput>;
 }
 
 /**
  * Create a console for printing color log.
- * @param {Tracer.LoggerConfig} [config] Configurate how is log print.
+ * @param [config] Configurate how is log print.
  */
 export function colorConsole(config?: Tracer.LoggerConfig): Tracer.Logger;
 /**
  * Create a console without color.
- * @param {Tracer.LoggerConfig} [config] Configurate how is log print.
+ * @param [config] Configurate how is log print.
  */
 export function console(config?: Tracer.LoggerConfig): Tracer.Logger;
 export function dailyfile(config?: Tracer.LoggerConfig): Tracer.Logger;
 
 /**
  * End all the output.
+ *
  * Equivalent to: `tracer.setLevel(Number.MAX_VALUE)`.
  */
 export function close(): void;
 /**
  * Change the log level in run time, for all the output.
- * @param {(number | string)} level
+ * @param level Output the log, if level of log larger than or equal to `level`.
  */
 export function setLevel(level: number | string): void;
 /**
