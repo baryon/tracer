@@ -46,7 +46,7 @@ export namespace Tracer {
         output: string;
     }
 
-    interface Level<T> {
+    interface LevelOption<T> {
         log?: T;
         trace?: T;
         debug?: T;
@@ -75,12 +75,12 @@ export namespace Tracer {
          * - method: method name of caller
          * - stack: call stack message
          */
-        format?: string | [string, Level<string>];
+        format?: string | [string, LevelOption<string>];
         /**
          * Datetime format (Using `Date Format`)
          */
         dateformat?: string;
-        filters?: FilterFunction[] | Level<FilterFunction> | Array<FilterFunction | Level<FilterFunction>>;
+        filters?: FilterFunction[] | LevelOption<FilterFunction> | Array<FilterFunction | LevelOption<FilterFunction>>;
         level?: string | number;
         methods?: string[];
         /**
@@ -110,7 +110,15 @@ export namespace Tracer {
         transport?: TransportFunction | TransportFunction[];
     }
 
-    type Logger = Level<(...args: any[]) => LogOutput>;
+    interface Logger {
+        log(...args: any[]): LogOutput;
+        trace(...args: any[]): LogOutput;
+        debug(...args: any[]): LogOutput;
+        info(...args: any[]): LogOutput;
+        warn(...args: any[]): LogOutput;
+        error(...args: any[]): LogOutput;
+        fatal(...args: any[]): LogOutput;
+    }
 }
 
 /**
