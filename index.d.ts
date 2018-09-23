@@ -62,7 +62,8 @@ export namespace Tracer {
         /**
          * Output format (Using `tinytim` templating)
          *
-         * Defaults to: "{{timestamp}} <{{title}}> {{file}}:{{line}} ({{method}}) {{message}}"
+         * Defaults to: `"{{timestamp}} <{{title}}> {{file}}:{{line}} ({{method}}) {{message}}"`
+         *
          * Possible values:
          * - timestamp: current time
          * - title: method name, default is 'log', 'trace', 'debug', 'info', 'warn', 'error','fatal'
@@ -81,6 +82,9 @@ export namespace Tracer {
          */
         dateformat?: string;
         filters?: FilterFunction[] | LevelOption<FilterFunction> | Array<FilterFunction | LevelOption<FilterFunction>>;
+        /**
+         * Output the log, if level of log larger than or equal to `level`.
+         */
         level?: string | number;
         methods?: string[];
         /**
@@ -109,8 +113,35 @@ export namespace Tracer {
          */
         transport?: TransportFunction | TransportFunction[];
     }
+    interface DailyFileConfig {
+        /**
+         * All daily log file's dir, default to: `'.'`.
+         */
+        root?: string;
+        /**
+         * Log file path format.
+         *
+         * Default to: `'{{root}}/{{prefix}}.{{date}}.log'`
+         *
+         * Possible values:
+         * - `root`: all daily log file's dir, default to: `'.'`.
+         * - `prefix`: it equal to `allLogsFileName`, if `allLogsFileName` is provided; else it will be the method name.
+         * - `date`: today's date.
+         */
+        logPathFormat?: string;
+        /**
+         * Datetime format (Using `Date Format`)
+         */
+        splitFormat?: string;
+        /**
+         * If `allLogsFileName` is provided then all level logs will be move to one daily log file.
+         */
+        allLogsFileName?: boolean;
+        maxLogFiles?: number;
+    }
 
     interface Logger {
+        [method: string]: (...args: any[]) => LogOutput;
         log(...args: any[]): LogOutput;
         trace(...args: any[]): LogOutput;
         debug(...args: any[]): LogOutput;
@@ -123,15 +154,19 @@ export namespace Tracer {
 
 /**
  * Create a console for printing color log.
- * @param [config] Configurate how is log print.
+ * @param [config] Configurate how logs are printed.
  */
 export function colorConsole(config?: Tracer.LoggerConfig): Tracer.Logger;
 /**
  * Create a console without color.
- * @param [config] Configurate how is log print.
+ * @param [config] Configurate how logs are printed.
  */
 export function console(config?: Tracer.LoggerConfig): Tracer.Logger;
-export function dailyfile(config?: Tracer.LoggerConfig): Tracer.Logger;
+/**
+ * DailyLog will output all types log to diff files every day like log4j.
+ * @param config Configurate how logs are printed & how log files are saved.
+ */
+export function dailyfile(config?: Tracer.LoggerConfig & Tracer.DailyFileConfig): Tracer.Logger;
 
 /**
  * End all the output.
@@ -141,6 +176,8 @@ export function dailyfile(config?: Tracer.LoggerConfig): Tracer.Logger;
 export function close(): void;
 /**
  * Change the log level in run time, for all the output.
+ * 
+ * Notice: If you set level in initialize, you can't change more lower level than the initial level.
  * @param level Output the log, if level of log larger than or equal to `level`.
  */
 export function setLevel(level: number | string): void;
