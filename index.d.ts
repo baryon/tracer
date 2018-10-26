@@ -1,7 +1,7 @@
 // TypeScript Version: 2.6
 
 export namespace Tracer {
-    interface LogOutput {
+    export interface LogOutput {
         /**
          * Current time.
          */
@@ -52,7 +52,7 @@ export namespace Tracer {
         output: string;
     }
 
-    interface LevelOption<T> {
+    export interface LevelOption<T> {
         log?: T;
         trace?: T;
         debug?: T;
@@ -61,10 +61,10 @@ export namespace Tracer {
         error?: T;
         fatal?: T;
     }
-    type FilterFunction = (data: string) => string | boolean | null | void;
-    type TransportFunction = (data: LogOutput) => void;
+    export type FilterFunction = (data: string) => string | boolean | null | void;
+    export type TransportFunction = (data: LogOutput) => void;
 
-    interface LoggerConfig {
+    export interface LoggerConfig {
         /**
          * Output format (Using `tinytim` templating)
          *
@@ -119,7 +119,7 @@ export namespace Tracer {
          */
         transport?: TransportFunction | TransportFunction[];
     }
-    interface DailyFileConfig {
+    export interface DailyFileConfig {
         /**
          * All daily log file's dir, default to: `'.'`.
          */
@@ -146,7 +146,7 @@ export namespace Tracer {
         maxLogFiles?: number;
     }
 
-    interface Logger {
+    export interface Logger {
         [method: string]: (...args: any[]) => LogOutput;
         log(...args: any[]): LogOutput;
         trace(...args: any[]): LogOutput;
