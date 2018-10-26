@@ -6,6 +6,9 @@ export namespace Tracer {
          * Current time.
          */
         timestamp: string;
+        /**
+         * The result of formating the template and arguments in `args`.
+         */
         message: string;
         /**
          * Method name, default is `log`, `trace`, `debug`, `info`, `warn`, `error`, `fatal`.
@@ -15,6 +18,9 @@ export namespace Tracer {
          * Method level, default is `log`: 0, `trace`: 1, `debug`: 2, `info`: 3, `warn`: 4, `error`: 5, `fatal`: 6.
          */
         level: number;
+        /**
+         * Arguments of `Logger` method.
+         */
         args: any[];
         /**
          * Method name of caller.
@@ -39,7 +45,7 @@ export namespace Tracer {
         /**
          * Call stack message.
          */
-        stack: string[];
+        stack: string;
         /**
          * The output to be written
          */
@@ -55,7 +61,7 @@ export namespace Tracer {
         error?: T;
         fatal?: T;
     }
-    type FilterFunction = (data: string) => string | void;
+    type FilterFunction = (data: string) => string | boolean | null | void;
     type TransportFunction = (data: LogOutput) => void;
 
     interface LoggerConfig {
@@ -81,7 +87,7 @@ export namespace Tracer {
          * Datetime format (Using `Date Format`)
          */
         dateformat?: string;
-        filters?: FilterFunction[] | LevelOption<FilterFunction> | Array<FilterFunction | LevelOption<FilterFunction>>;
+        filters?: FilterFunction[] | LevelOption<FilterFunction> | Array<FilterFunction | LevelOption<FilterFunction | FilterFunction[]>>;
         /**
          * Output the log, if level of log larger than or equal to `level`.
          */
