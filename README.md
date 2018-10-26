@@ -488,6 +488,10 @@ More features, please read examples.
 
 ## History
 
+### 0.9.2
+* Fixed. Make type definitions correct & add comments. #89 by @plylrnsdy. 
+* Updated npm packages
+
 ### 0.9.1
 * Fixed. transport function parameter data type is LogOutput not string #87 by @myfjdthink. 
 
