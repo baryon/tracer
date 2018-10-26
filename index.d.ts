@@ -50,6 +50,11 @@ export namespace Tracer {
          * The output to be written
          */
         output: string;
+
+        /**
+         * Any custom keys
+         */
+        [key: string]: any;
     }
 
     export interface LevelOption<T> {
