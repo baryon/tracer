@@ -2,29 +2,74 @@
 
 export namespace Tracer {
     interface LogOutput {
+        /**
+         * Current time.
+         */
         timestamp: string;
+        /**
+         * The result of formating the template and arguments in `args`.
+         */
         message: string;
+        /**
+         * Method name, default is `log`, `trace`, `debug`, `info`, `warn`, `error`, `fatal`.
+         */
         title: string;
+        /**
+         * Method level, default is `log`: 0, `trace`: 1, `debug`: 2, `info`: 3, `warn`: 4, `error`: 5, `fatal`: 6.
+         */
         level: number;
+        /**
+         * Arguments of `Logger` method.
+         */
         args: any[];
+        /**
+         * Method name of caller.
+         */
         method: string;
+        /**
+         * File's path.
+         */
         path: string;
+        /**
+         * Line number.
+         */
         line: string;
+        /**
+         * Position.
+         */
         pos: string;
+        /**
+         * File's name.
+         */
         file: string;
-        stack: string[];
-        /* The output to be written */
+        /**
+         * Call stack message.
+         */
+        stack: string;
+        /**
+         * The output to be written
+         */
         output: string;
     }
 
-    type FilterFunction = (data: string) => string | void;
+    interface LevelOption<T> {
+        log?: T;
+        trace?: T;
+        debug?: T;
+        info?: T;
+        warn?: T;
+        error?: T;
+        fatal?: T;
+    }
+    type FilterFunction = (data: string) => string | boolean | null | void;
     type TransportFunction = (data: LogOutput) => void;
 
     interface LoggerConfig {
         /**
          * Output format (Using `tinytim` templating)
          *
-         * Defaults to: "{{timestamp}} <{{title}}> {{file}}:{{line}} ({{method}}) {{message}}"
+         * Defaults to: `"{{timestamp}} <{{title}}> {{file}}:{{line}} ({{method}}) {{message}}"`
+         *
          * Possible values:
          * - timestamp: current time
          * - title: method name, default is 'log', 'trace', 'debug', 'info', 'warn', 'error','fatal'
@@ -37,15 +82,25 @@ export namespace Tracer {
          * - method: method name of caller
          * - stack: call stack message
          */
-        format?: string;
+        format?: string | [string, LevelOption<string>];
+        /**
+         * Datetime format (Using `Date Format`)
+         */
         dateformat?: string;
-        filters?: FilterFunction[];
-        level?: string;
+        filters?: FilterFunction[] | LevelOption<FilterFunction> | Array<FilterFunction | LevelOption<FilterFunction | FilterFunction[]>>;
+        /**
+         * Output the log, if level of log larger than or equal to `level`.
+         */
+        level?: string | number;
         methods?: string[];
-        /* get the specified index of stack as file information. It is userful for development package. */
+        /**
+         * Get the specified index of stack as file information. It is useful for development package.
+         */
         stackIndex?: number;
         inspectOpt?: {
-            /* if true then the object's non-enumerable properties will be shown too. Defaults to false */
+            /**
+             * If true then the object's non-enumerable properties will be shown too. Defaults to false.
+             */
             showHidden: boolean,
             /**
              * Tells inspect how many times to recurse while formatting the object.
@@ -55,13 +110,44 @@ export namespace Tracer {
             depth: number
         };
 
-        /* Pre-process the log object. */
+        /**
+         * Pre-process the log object.
+         */
         preprocess?(data: LogOutput): void;
-        /* Transport function (e.g. console.log) */
+        /**
+         * Transport function (e.g. console.log)
+         */
         transport?: TransportFunction | TransportFunction[];
+    }
+    interface DailyFileConfig {
+        /**
+         * All daily log file's dir, default to: `'.'`.
+         */
+        root?: string;
+        /**
+         * Log file path format.
+         *
+         * Default to: `'{{root}}/{{prefix}}.{{date}}.log'`
+         *
+         * Possible values:
+         * - `root`: all daily log file's dir, default to: `'.'`.
+         * - `prefix`: it equal to `allLogsFileName`, if `allLogsFileName` is provided; else it will be the method name.
+         * - `date`: today's date.
+         */
+        logPathFormat?: string;
+        /**
+         * Datetime format (Using `Date Format`)
+         */
+        splitFormat?: string;
+        /**
+         * If `allLogsFileName` is provided then all level logs will be move to one daily log file.
+         */
+        allLogsFileName?: boolean;
+        maxLogFiles?: number;
     }
 
     interface Logger {
+        [method: string]: (...args: any[]) => LogOutput;
         log(...args: any[]): LogOutput;
         trace(...args: any[]): LogOutput;
         debug(...args: any[]): LogOutput;
@@ -72,10 +158,36 @@ export namespace Tracer {
     }
 }
 
+/**
+ * Create a console for printing color log.
+ * @param [config] Configurate how logs are printed.
+ */
 export function colorConsole(config?: Tracer.LoggerConfig): Tracer.Logger;
+/**
+ * Create a console without color.
+ * @param [config] Configurate how logs are printed.
+ */
 export function console(config?: Tracer.LoggerConfig): Tracer.Logger;
-export function dailyfile(config?: Tracer.LoggerConfig): Tracer.Logger;
+/**
+ * DailyLog will output all types log to diff files every day like log4j.
+ * @param config Configurate how logs are printed & how log files are saved.
+ */
+export function dailyfile(config?: Tracer.LoggerConfig & Tracer.DailyFileConfig): Tracer.Logger;
 
+/**
+ * End all the output.
+ *
+ * Equivalent to: `tracer.setLevel(Number.MAX_VALUE)`.
+ */
 export function close(): void;
+/**
+ * Change the log level in run time, for all the output.
+ * 
+ * Notice: If you set level in initialize, you can't change more lower level than the initial level.
+ * @param level Output the log, if level of log larger than or equal to `level`.
+ */
 export function setLevel(level: number | string): void;
+/**
+ * Get the current log level.
+ */
 export function getLevel(): number | string;
