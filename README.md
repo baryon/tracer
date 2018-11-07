@@ -488,6 +488,10 @@ More features, please read examples.
 
 ## History
 
+### 0.9.3
+* Fixed. Any custom keys for typescript. #90 by @Diluka. 
+* Updated formatJson sample
+
 ### 0.9.2
 * Fixed. Make type definitions correct & add comments. #89 by @plylrnsdy. 
 * Updated npm packages
