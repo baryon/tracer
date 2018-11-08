@@ -12,5 +12,3 @@ matrix:
     - node_js: node
       script:
         - npm test
-        - npm install dtslint@^0.3
-        - npm run dtslint
