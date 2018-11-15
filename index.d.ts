@@ -147,7 +147,7 @@ export namespace Tracer {
         /**
          * If `allLogsFileName` is provided then all level logs will be move to one daily log file.
          */
-        allLogsFileName?: boolean;
+        allLogsFileName?: boolean | string;
         maxLogFiles?: number;
     }
 
