@@ -488,6 +488,9 @@ More features, please read examples.
 
 ## History
 
+### 0.9.5
+* Fixed. Update index.d.ts and dtslint for typescript. #92 and #94 by @Diluka. 
+
 ### 0.9.3
 * Fixed. Any custom keys for typescript. #90 by @Diluka. 
 * Updated formatJson sample
