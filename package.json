@@ -26,7 +26,7 @@
     "typescript": "^3.1.6"
   },
   "main": "./lib/index",
-  "types": "./lib/index.d.ts",
+  "types": "./types/index.d.ts",
   "keywords": [
     "log",
     "logger",
@@ -40,7 +40,7 @@
     "posttest": "npm run lint",
     "test:coverage": "istanbul cover expresso test/*.js",
     "posttest:coverage": "npm run lint",
-    "dtslint": "dtslint ."
+    "dtslint": "dtslint types"
   },
   "engines": {
     "node": ">= 0.10.0"
