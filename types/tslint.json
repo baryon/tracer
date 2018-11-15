@@ -1,0 +1,8 @@
+{
+    "extends": "dtslint/dtslint.json", // Or "dtslint/dt.json" if on DefinitelyTyped
+    "rules": {
+        "no-trailing-whitespace": false,
+        "no-unnecessary-generics": false,
+        "strict-export-declare-modifiers": false
+    }
+}
