@@ -156,6 +156,7 @@ format tag:
 *  line: line number
 *  pos: position
 *  path: file's path
+*  folder: file's parent folder
 *  method: method name of caller
 *  stack: call stack message
 
