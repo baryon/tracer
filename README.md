@@ -484,10 +484,20 @@ Read examples please. [setLevel.js](https://github.com/baryon/tracer/blob/master
 support count, assert and table methods.
 Read examples please. [consoleMethods.js](https://github.com/baryon/tracer/blob/master/example/consoleMethods.js)
 
+### Override the Default `console.log()`, `console.error()` functions globally
+
+Setting `overwriteConsoleMethods` option which will overwrite the default `console` operations. To use, declare `logger = require('tracer')({overwriteConsoleMethods: true})`. Once this is called, any `console.log()` or similar call will use Tracer to process the output. See example [consoleOverwrite.js](blob/master/example/consoleMethods.js).
+
 
 More features, please read examples.
 
 ## History
+
+### 0.9.8
+* Added `overwriteConsoleMethods` option which will overwrite the default `console` operations.
+
+### 0.9.7
+* Added `{{folder}}` template type to return script's parent folder.
 
 ### 0.9.5
 * Fixed. Update index.d.ts and dtslint for typescript. #92 and #94 by @Diluka. 
