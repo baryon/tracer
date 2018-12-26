@@ -489,6 +489,9 @@ More features, please read examples.
 
 ## History
 
+### 0.9.8
+* Added. {{folder}} template option for parent folder. #96 by @shbatm.
+
 ### 0.9.5
 * Fixed. Update index.d.ts and dtslint for typescript. #92 and #94 by @Diluka. 
 
