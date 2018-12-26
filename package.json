@@ -23,7 +23,7 @@
     "istanbul": "^0.4.5",
     "mongoskin": "2.1.0",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.2.2"
   },
   "main": "./lib/index",
   "types": "./types/index.d.ts",
