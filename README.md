@@ -491,6 +491,7 @@ More features, please read examples.
 
 ### 0.9.8
 * Added. {{folder}} template option for parent folder. #96 by @shbatm.
+* Added. rootDir param option for folder. #99 by @nswbmw. sample: folder.js and folder2.js
 
 ### 0.9.5
 * Fixed. Update index.d.ts and dtslint for typescript. #92 and #94 by @Diluka. 
