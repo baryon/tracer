@@ -37,7 +37,7 @@
     "test": "expresso test/*",
     "lint:fix": "eslint --fix .",
     "lint": "eslint .",
-    "posttest": "npm run lint && npm run dtslint",
+    "posttest": "npm run lint",
     "test:coverage": "istanbul cover expresso test/*.js",
     "posttest:coverage": "npm run lint",
     "dtslint": "dtslint types"
