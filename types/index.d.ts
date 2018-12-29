@@ -39,6 +39,10 @@ export namespace Tracer {
          */
         pos: string;
         /**
+         * folder path.
+         */
+        folder: string;
+        /**
          * File's name.
          */
         file: string;
@@ -88,6 +92,10 @@ export namespace Tracer {
          * - stack: call stack message
          */
         format?: string | [string, LevelOption<string>];
+         /**
+          * rootDir of folder path.
+          */
+        rootDir?: string;
         /**
          * Datetime format (Using `Date Format`)
          */
