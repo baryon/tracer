@@ -100,7 +100,7 @@ export namespace Tracer {
          * Datetime format (Using `Date Format`)
          */
         dateformat?: string;
-        filters?: FilterFunction[] | LevelOption<FilterFunction> | Array<FilterFunction | LevelOption<FilterFunction | FilterFunction[]>>;
+        filters?: FilterFunction[] | LevelOption<FilterFunction | FilterFunction[]> | Array<FilterFunction | LevelOption<FilterFunction | FilterFunction[]>>;
         /**
          * Output the log, if level of log larger than or equal to `level`.
          */
