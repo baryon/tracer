@@ -18,7 +18,7 @@
   "devDependencies": {
     "cli-color": "^1.4.0",
     "dtslint": "^0.4.9",
-    "eslint": "^5.11.1",
+    "eslint": "^5.16.0",
     "istanbul": "^0.4.5",
     "mocha": "^6.2.0",
     "mongoskin": "2.1.0",
