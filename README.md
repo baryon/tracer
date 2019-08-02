@@ -489,6 +489,11 @@ More features, please read examples.
 
 ## History
 
+### 0.9.9
+* Fixed. Port tests from expresso to mocha. Fixes #105 #106 by @ossdev07.
+* Fixed. Update type definitions to be able to use array in filters. #104 by @irisked.
+* Fixed potential security vulnerabilities in your dependencies in istanbul package.
+
 ### 0.9.8
 * Added. {{folder}} template option for parent folder. #96 by @shbatm.
 * Added. rootDir param option for folder. #99 by @nswbmw. sample: folder.js and folder2.js
