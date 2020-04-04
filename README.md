@@ -523,6 +523,9 @@ More features, please read examples.
 
 ## History
 
+### 1.0.3
+- Updated some packages to the latest version. Fixed severity vulnerability
+
 ### 1.0.2
 
 - Updated some packages to the latest version
