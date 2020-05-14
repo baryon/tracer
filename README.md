@@ -523,6 +523,11 @@ More features, please read examples.
 
 ## History
 
+### 1.1.0
+- Updated map tracer.warn to console.warn. Thanks @eouia
+- Fixed webpack warning "Critical dependency: the request of a dependency is an expression". Thanks @tjr
+- Fixed Move nyc from dependencies to devDependencies. Thanks @madarche
+
 ### 1.0.3
 - Updated some packages to the latest version. Fixed severity vulnerability
 
