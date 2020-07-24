@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://github.com/baryon/tracer.git"
   },
-  "version": "1.1.2",
+  "version": "1.1.3",
   "author": "LI Long <lilong@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -17,13 +17,13 @@
   },
   "devDependencies": {
     "cli-color": "^2.0.0",
-    "dtslint": "^3.6.0",
-    "eslint": "^6.8.0",
-    "mocha": "^7.1.1",
+    "dtslint": "^3.6.13",
+    "eslint": "^7.5.0",
+    "mocha": "^8.0.1",
     "mongoskin": "2.1.0",
-    "nyc": "^15.0.1",
+    "nyc": "^15.1.0",
     "tslint": "^6.1.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.7"
   },
   "main": "./lib/index",
   "types": "./types/index.d.ts",
