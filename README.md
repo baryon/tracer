@@ -523,6 +523,11 @@ More features, please read examples.
 
 ## History
 
+### 1.1.4
+- Fixed fixes security vulnerability by GitHub bot
+- Merged fix bug then when set allLogFile cannot delete old old files #122. Thanks @horsefaced
+- Congratulations 1.1K Stargazers
+
 ### 1.1.0
 - Updated map tracer.warn to console.warn. Thanks @eouia
 - Fixed webpack warning "Critical dependency: the request of a dependency is an expression". Thanks @tjr
