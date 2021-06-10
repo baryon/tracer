@@ -523,6 +523,8 @@ More features, please read examples.
 
 ## History
 
+### 1.1.5
+- Updated some packages to the latest version. Fixed severity vulnerability
 ### 1.1.4
 - Fixed fixes security vulnerability by GitHub bot
 - Merged fix bug then when set allLogFile cannot delete old old files #122. Thanks @horsefaced
