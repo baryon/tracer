@@ -61,19 +61,11 @@ export namespace Tracer {
         [key: string]: any;
     }
 
-    export interface LevelOption<T> {
-        log?: T;
-        trace?: T;
-        debug?: T;
-        info?: T;
-        warn?: T;
-        error?: T;
-        fatal?: T;
-    }
+    export type LevelOption<T, M extends string> = Partial<Record<M, T>>
     export type FilterFunction = (data: string) => string | boolean | null | void;
     export type TransportFunction = (data: LogOutput) => void;
 
-    export interface LoggerConfig {
+    export interface LoggerConfig<M extends string = "log" | "trace" | "debug" | "info" | "warn" | "error" | "fatal"> {
         /**
          * Output format (Using `tinytim` templating)
          *
@@ -91,7 +83,7 @@ export namespace Tracer {
          * - method: method name of caller
          * - stack: call stack message
          */
-        format?: string | [string, LevelOption<string>];
+        format?: string | [string, LevelOption<string, M>];
          /**
           * rootDir of folder path.
           */
@@ -100,12 +92,12 @@ export namespace Tracer {
          * Datetime format (Using `Date Format`)
          */
         dateformat?: string;
-        filters?: FilterFunction[] | LevelOption<FilterFunction | FilterFunction[]> | Array<FilterFunction | LevelOption<FilterFunction | FilterFunction[]>>;
+        filters?: FilterFunction[] | LevelOption<FilterFunction | FilterFunction[], M> | Array<FilterFunction | LevelOption<FilterFunction | FilterFunction[], M>>;
         /**
          * Output the log, if level of log larger than or equal to `level`.
          */
         level?: string | number;
-        methods?: string[];
+        methods?: M[];
         /**
          * Get the specified index of stack as file information. It is useful for development package.
          */
@@ -159,33 +151,24 @@ export namespace Tracer {
         maxLogFiles?: number;
     }
 
-    export interface Logger {
-        [method: string]: (...args: any[]) => LogOutput;
-        log(...args: any[]): LogOutput;
-        trace(...args: any[]): LogOutput;
-        debug(...args: any[]): LogOutput;
-        info(...args: any[]): LogOutput;
-        warn(...args: any[]): LogOutput;
-        error(...args: any[]): LogOutput;
-        fatal(...args: any[]): LogOutput;
-    }
+    export type Logger<M extends string> = Record<M, (...args: any[]) => LogOutput>
 }
 
 /**
  * Create a console for printing color log.
  * @param [config] Configurate how logs are printed.
  */
-export function colorConsole(config?: Tracer.LoggerConfig): Tracer.Logger;
+export function colorConsole<M extends string>(config?: Tracer.LoggerConfig<M>): Tracer.Logger<M>;
 /**
  * Create a console without color.
  * @param [config] Configurate how logs are printed.
  */
-export function console(config?: Tracer.LoggerConfig): Tracer.Logger;
+export function console<M extends string>(config?: Tracer.LoggerConfig<M>): Tracer.Logger<M>;
 /**
  * DailyLog will output all types log to diff files every day like log4j.
  * @param config Configurate how logs are printed & how log files are saved.
  */
-export function dailyfile(config?: Tracer.LoggerConfig & Tracer.DailyFileConfig): Tracer.Logger;
+export function dailyfile<M extends string>(config?: Tracer.LoggerConfig<M> & Tracer.DailyFileConfig): Tracer.Logger<M>;
 
 /**
  * End all the output.
