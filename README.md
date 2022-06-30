@@ -1,8 +1,6 @@
 # tracer for node.js
 
 [![NPM version](http://img.shields.io/npm/v/tracer.svg)](https://www.npmjs.org/package/tracer)
-[![Dependency Status](https://david-dm.org/baryon/tracer.svg)](https://david-dm.org/baryon/tracer)
-[![devDependency Status](https://david-dm.org/baryon/tracer/dev-status.svg)](https://david-dm.org/baryon/tracer#info=devDependencies)
 [![Build Status](https://secure.travis-ci.org/baryon/tracer.png)](http://travis-ci.org/baryon/tracer)
 
 A powerful and customizable logging library for node.js.
@@ -523,8 +521,13 @@ More features, please read examples.
 
 ## History
 
+### 1.1.6
+- Merged: Typings for new methods #131 by @zS1L3NT
+- Merged: Update type of depth property in inspectOpt #134 by @SufianBabri
+
 ### 1.1.5
 - Updated some packages to the latest version. Fixed severity vulnerability
+
 ### 1.1.4
 - Fixed fixes security vulnerability by GitHub bot
 - Merged fix bug then when set allLogFile cannot delete old old files #122. Thanks @horsefaced
