@@ -120,7 +120,7 @@ export namespace Tracer {
              * This is useful for inspecting large complicated objects.
              * Defaults to 2. To make it recurse indefinitely pass null.
              */
-            depth: number
+            depth: number | null
         };
 
         /**
