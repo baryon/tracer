@@ -1,5 +1,5 @@
 "use strict";
-var assert = require("assert");
+import * as assert from "assert";
 
 describe('simple', function() {
 	const logger = require('../').console({
@@ -11,7 +11,7 @@ describe('simple', function() {
 	const o = logger.info('hello');
 	it("simple logger", function () {
 	assert.strictEqual (o['message'], 'hello');
-	assert.strictEqual (o['file'], 'test.js');
+	assert.strictEqual (o['file'], 'test.ts');
 	assert.strictEqual (o['line'], 11);
 	assert.strictEqual (o['level'], 3);
 	});
@@ -31,7 +31,7 @@ describe('stack index', function() {
 	const o = logMgr('info', 'hello');
 	it("stack index", function () {
 	assert.strictEqual (o['message'], 'hello');
-	assert.strictEqual (o['file'], 'test.js');
+	assert.strictEqual (o['file'], 'test.ts');
 	assert.strictEqual (o['line'], 31);
 	});
 });
@@ -266,7 +266,7 @@ describe("loop", function() {
 	for(let i=0; i<100; i++){
 		const o = logger.info('hello');
 		assert.strictEqual (o['message'], 'hello');
-		assert.strictEqual (o['file'], 'test.js');
+		assert.strictEqual (o['file'], 'test.ts');
 		assert.strictEqual (o['line'], 267);
 		assert.strictEqual (o['level'], 3);
 	}
@@ -332,8 +332,8 @@ describe("simple", function() {
 	const logger = require('../').console();
 	const o = logger.log('hello');
 	it("recheck simple", function () {
-	assert.strictEqual (o['message'], 'hello');
-	assert.strictEqual (o['file'], 'test.js');
+	assert.strictEqual(o['message'], 'hello');
+	assert.strictEqual (o['file'], 'test.ts');
 	assert.strictEqual (o['line'], 333);
 	assert.strictEqual (o['level'], 0);
 	});

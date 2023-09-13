@@ -33,11 +33,11 @@ export namespace Tracer {
         /**
          * Line number.
          */
-        line: string;
+        line: number;
         /**
          * Position.
          */
-        pos: string;
+        pos: number;
         /**
          * folder path.
          */
@@ -61,7 +61,7 @@ export namespace Tracer {
         [key: string]: any;
     }
 
-    export type LevelOption<T, M extends string> = Partial<Record<M, T>>
+    export type LevelOption<T, M extends string> = Partial<Record<M, T>>;
     export type FilterFunction = (data: string) => string | boolean | null | void;
     export type TransportFunction = (data: LogOutput) => void;
 
@@ -151,7 +151,11 @@ export namespace Tracer {
         maxLogFiles?: number;
     }
 
-    export type Logger<M extends string> = Record<M, (...args: any[]) => LogOutput>
+    export type Method = (...args: any[]) => void;
+    export type DynamicFunctions<M extends string> = {
+    [ key in M ]: Method;
+  };
+    export type Logger<M extends string> = Record<M, (...args: any[]) => LogOutput> & DynamicFunctions<M>;
 }
 
 /**

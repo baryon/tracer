@@ -1,10 +1,10 @@
-import * as tracer from "tracer";
+import * as tracer from "..";
 import * as colors from "colors";
 
-let logger: tracer.Tracer.Logger;
+let logger;
 
 logger = tracer.console();
-
+logger.log( logger )
 logger.log("hello");
 logger.trace("hello", "world");
 logger.debug("hello %s", "world", 123);
