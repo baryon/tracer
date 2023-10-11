@@ -1,7 +1,6 @@
 # tracer for node.js
 
 [![NPM version](http://img.shields.io/npm/v/tracer.svg)](https://www.npmjs.org/package/tracer)
-[![Build Status](https://secure.travis-ci.org/baryon/tracer.png)](http://travis-ci.org/baryon/tracer)
 
 A powerful and customizable logging library for node.js.
 
@@ -520,6 +519,10 @@ Read examples please. [consoleMethods.js](https://github.com/baryon/tracer/blob/
 More features, please read examples.
 
 ## History
+
+### 1.3.0
+- Update packages
+- Enable dailyfile only on nodejs
 
 ### 1.1.6
 - Merged: Typings for new methods #131 by @zS1L3NT
